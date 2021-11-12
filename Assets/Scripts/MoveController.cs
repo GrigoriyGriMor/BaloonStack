@@ -69,7 +69,10 @@ public class MoveController : MonoBehaviour
             //{
             //    for (int i = 0; i < anim.Length; i++)
             //    {
-                   animator.SetBool("Run", false);
+            if (animator)
+            {
+                animator.SetBool("Run", false);
+            }
             //        anim[i].SetBool("HardRun", false);
             //    }
             //}
@@ -78,12 +81,16 @@ public class MoveController : MonoBehaviour
 
         float angle = Mathf.Atan2(JoystickStick.Instance.HorizontalAxis(), JoystickStick.Instance.VerticalAxis()) * Mathf.Rad2Deg;
         visualPlayer.transform.rotation = Quaternion.Euler(0, angle, 0);
-       
+
         //if (anim.Length != 0)
         //{
         //    for (int i = 0; i < anim.Length; i++)
         //        if (_speed == speed)
-                  animator.SetBool("Run", true);
+        if (animator)
+        {
+            animator.SetBool("Run", true);
+        }
+
         //        else
         //            anim[i].SetBool("HardRun", true);
         //}
@@ -103,7 +110,7 @@ public class MoveController : MonoBehaviour
     {
         //for (int i = 0; i < anim.Length; i++)
         //    anim[i].SetBool("HardRun", false);
-         //speed = speed;
+        //speed = speed;
     }
 
 

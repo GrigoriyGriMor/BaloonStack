@@ -43,10 +43,11 @@ public class GameController : MonoBehaviour
     void Start()
     {
         checkerAirPlayer = player.GetComponent<CheckerAir>();
+        Time.timeScale = 0;
     }
 
     void Update()
     {
-        
+       // Debug.Log(" Start ");
     }
 }
