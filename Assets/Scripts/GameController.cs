@@ -11,10 +11,17 @@ public class GameController : MonoBehaviour
 {
     public static GameController Instance;
 
-    [Header("ссылка на игрока") ]
+    [Header("ссылка на игрока")]
     public GameObject player;
+    private CheckerAir checkerAirPlayer;
 
-    public CheckerAir checkerAirPlayer;
+    [Header("Массив противников ")]
+    [SerializeField]
+    private List<GameObject> arrayEnemys;
+
+    [Header("Массив шариков")]
+    [SerializeField]
+    private List<GameObject> arrayBaloons;
 
     public int countAirPlayer
     {
@@ -22,10 +29,8 @@ public class GameController : MonoBehaviour
         {
             return checkerAirPlayer.countAir;
         }
-       
-    }
-   
 
+    }
 
     void Awake()
     {
@@ -46,8 +51,18 @@ public class GameController : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    void Update()
+
+    public Transform GetNewTarget(Transform targetObject)
     {
-       // Debug.Log(" Start ");
+        Transform currentPosition = null;
+
+       // foreach (Transform )
+      //  {
+
+     //   }
+
+
+        return currentPosition;
     }
+   
 }

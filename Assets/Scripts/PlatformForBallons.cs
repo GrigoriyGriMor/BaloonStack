@@ -22,13 +22,10 @@ public class PlatformForBallons : MonoBehaviour
     [SerializeField]
     private GameObject gameObjectBaloon;
 
-
-
     private void Update()
     {
 
     }
-
 
     void InflatingBallons()
     {
