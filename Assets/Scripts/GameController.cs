@@ -20,8 +20,12 @@ public class GameController : MonoBehaviour
     private List<GameObject> arrayEnemys;
 
     [Header("Массив шариков")]
-    [SerializeField]
-    private List<Transform> arrayBaloons;
+    public List<Transform> arrayBaloons;
+
+    [HideInInspector]
+    public bool isPlayGame;
+
+
 
     public int countAirPlayer
     {
@@ -49,26 +53,31 @@ public class GameController : MonoBehaviour
     {
         checkerAirPlayer = player.GetComponent<CheckerAir>();
         Time.timeScale = 0;
+        isPlayGame = false;
+
     }
 
-
-    public Transform GetNewTarget(Transform targetObject)
+    /// <summary>
+    /// поиск цели
+    /// </summary>
+    public Transform GetNewTarget(Transform positionObject)
     {
         Transform currentPosition = null;
 
         if (arrayBaloons.Count > 0)
         {
-            float lastPosition = Vector3.Distance(arrayBaloons[0].transform.position, targetObject.transform.position); ;
+            float lastPosition = 100;
 
             foreach (Transform currentBaloon in arrayBaloons)
             {
-                float currentDistance = Vector3.Distance(currentBaloon.transform.position, targetObject.transform.position);
+                float currentDistance = Vector3.Distance(currentBaloon.position, positionObject.position);
 
                 if (currentBaloon.gameObject.activeInHierarchy)
                 {
                     if (lastPosition > currentDistance)
                     {
                         currentPosition = currentBaloon;
+                        lastPosition = currentDistance;
                     }
                 }
             }
@@ -76,5 +85,6 @@ public class GameController : MonoBehaviour
         }
         return currentPosition;
     }
+
 
 }

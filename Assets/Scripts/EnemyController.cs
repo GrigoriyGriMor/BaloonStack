@@ -5,51 +5,101 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    // [SerializeField]
     private NavMeshAgent navMeshAgent;
 
-    [SerializeField]
-    private Transform currentObject;
+    private CheckerAir checkerAir;
+
+    //[SerializeField]
+    private Transform currentTarget;
 
     [SerializeField]
     private Animator animator;
 
-    private float currentSpeed;
+    [SerializeField]
+    [Header("Кол-во шаров для скачивания")]
+    private int countBaloonsInflating = 3;
+
+    [SerializeField]
+    [Header("Место скачивания")]
+    private Transform pointInflating;
+
+    private float currentSpeed; // Текущая цель
 
     void Start()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>() as NavMeshAgent; 
+        navMeshAgent = GetComponent<NavMeshAgent>() as NavMeshAgent;
         currentSpeed = navMeshAgent.speed;
+        //currentTarget = GetNewTarget(gameObject.transform);
     }
+
 
     void Update()
     {
-        if (Time.timeScale > 0)
+        if (GameController.Instance.isPlayGame)
         {
-            UpdateTarget(currentObject);
+            //int remainderDivision = checkerAir.countAir % countBaloonsInflating;
+            //  if (remainderDivision == 0)
+            //  {
+            //  currentTarget = pointInflating;
+            //  }
+            //  else
+            //  {
+            currentTarget = GetNewTarget(gameObject.transform);
+            //  }
+            UpdateTarget();
         }
+
     }
 
-    void UpdateTarget(Transform targetObject)
+    void UpdateTarget()
     {
-        if (targetObject && targetObject.gameObject.activeInHierarchy)
+        if (currentTarget)
         {
-            navMeshAgent.speed = currentSpeed;
-            navMeshAgent.destination = targetObject.position;
-            animator.SetBool("Run", true);
+            if (currentTarget.gameObject.activeInHierarchy)
+            {
+                RunEnemy();
+            }
+            else
+            {
+                IdleEnemy();
+            }
         }
         else
         {
-            navMeshAgent.speed = 0;
-            animator.SetBool("Run", false);
-            GetNewTarget();
+            IdleEnemy();
         }
     }
 
-    void GetNewTarget()
+
+    /// <summary>
+    /// побежал перс 
+    /// </summary>
+    void RunEnemy()
     {
-        currentObject = GameController.Instance.GetNewTarget(gameObject.transform);
-        Debug.Log("Поиск целей  " + currentObject.gameObject);
+        navMeshAgent.speed = currentSpeed;
+        navMeshAgent.destination = currentTarget.position;
+        animator.SetBool("Run", true);
     }
 
+
+    /// <summary>
+    /// стоп перс
+    /// </summary>
+    void IdleEnemy()
+    {
+        navMeshAgent.speed = 0;
+        animator.SetBool("Run", false);
+    }
+
+    /// <summary>
+    /// поиск цели
+    /// </summary>
+    public Transform GetNewTarget(Transform positionObject)
+    {
+        Transform currentPosition = GameController.Instance.GetNewTarget(positionObject);
+        return currentPosition;
+    }
+
+
 }
+
