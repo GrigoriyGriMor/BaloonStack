@@ -11,7 +11,7 @@ public class StartGame : MonoBehaviour, IPointerDownHandler
     {
         Debug.Log(" Start ");
         Time.timeScale = 1;
-        gameObject.SetActive(false);
+      //  gameObject.SetActive(false);
     }
 }
 
