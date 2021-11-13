@@ -19,12 +19,16 @@ public class MoveController : MonoBehaviour
     [SerializeField]
     private float speedBegin = 1.0f;
 
-    [SerializeField]
-    private float speed;
-
     [Header("Коэфициент уеньшения скорости")]
     [SerializeField]
-    private int ratioSpeed = 50;
+    private int multiplySpeed = 3;
+
+    [Header("Кол-во шариков RunHard")]
+    [SerializeField]
+    private int maxRunHard = 2;
+
+    [SerializeField]
+    private float speed;
 
     [SerializeField] private Animator animator;
 
@@ -35,7 +39,16 @@ public class MoveController : MonoBehaviour
 
     private void Update()
     {
-        ActiveHardRun(1);
+        if (GameController.Instance.checkerAirPlayer.countAir >= maxRunHard)
+        {
+            //ActiveHardRun(multiplySpeed);
+        }
+        else
+        {
+          //  ActiveEaseRun();
+        }
+        ActiveEaseRun();
+
     }
 
     void FixedUpdate()
@@ -72,6 +85,8 @@ public class MoveController : MonoBehaviour
             if (animator)
             {
                 animator.SetBool("Run", false);
+                //animator.SetBool("RunHard", false);
+
             }
             //        anim[i].SetBool("HardRun", false);
             //    }
@@ -85,32 +100,37 @@ public class MoveController : MonoBehaviour
         //if (anim.Length != 0)
         //{
         //    for (int i = 0; i < anim.Length; i++)
-        //        if (_speed == speed)
         if (animator)
         {
-            animator.SetBool("Run", true);
+            if  (speed == speedBegin)
+            {
+                animator.SetBool("Run", true);
+            }
+            else
+            {
+               // animator.SetBool("RunHard", true);
+            }
+            //            anim[i].SetBool("HardRun", true);
         }
-
-        //        else
-        //            anim[i].SetBool("HardRun", true);
-        //}
 
         Vector3 movement = new Vector3(horizMove, 0, verticalMove) * speed;
         transform.Translate(movement * Time.fixedDeltaTime);
     }
 
-    public void ActiveHardRun(int multiply)
+    public void ActiveHardRun(float multiply)
     {
         //for (int i = 0; i < anim.Length; i++)
         //    anim[i].SetBool("HardRun", true);
-        speed = speedBegin; // - (multiply / ratioSpeed);
+        //animator.SetBool("RunHard", true);
+        speed = speedBegin / multiply;   
     }
 
     public void ActiveEaseRun()
     {
         //for (int i = 0; i < anim.Length; i++)
         //    anim[i].SetBool("HardRun", false);
-        //speed = speed;
+        //animator.SetBool("RunHard", false);
+        speed = speedBegin;
     }
 
 
