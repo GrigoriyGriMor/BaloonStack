@@ -7,7 +7,6 @@ public class PlatformForBallons : MonoBehaviour
     [SerializeField]
     private bool isPlayer;
 
-    [SerializeField]
     private GameObject currentPlayer;
 
     [Header("Время между надувами воздуха")]
@@ -22,18 +21,12 @@ public class PlatformForBallons : MonoBehaviour
     [SerializeField]
     private GameObject gameObjectBaloon;
 
-    private void Update()
-    {
-
-    }
-
     void InflatingBallons()
     {
         //Сколько воздуха забираем
         int countAirDel = 1;
         if (currentPlayer.GetComponent<CheckerAir>().DelAir(countAirDel))
         {
-
             gameObjectBaloon.transform.position = pointSpawnBallon.position;
         }
     }

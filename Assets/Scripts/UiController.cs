@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class UiController : MonoBehaviour
 {
-
     [SerializeField]
     private Slider PlayerResult;
 

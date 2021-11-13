@@ -9,34 +9,30 @@ public class EnemyController : MonoBehaviour
     private NavMeshAgent navMeshAgent;
 
     [SerializeField]
-    private Transform targetObject;
+    private Transform currentObject;
 
     [SerializeField]
     private Animator animator;
 
     private float currentSpeed;
 
-    // Start is called before the first frame update
     void Start()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>() as NavMeshAgent; //FindObjectOfType(typeof(NavMeshAgent)) as NavMeshAgent;
+        navMeshAgent = GetComponent<NavMeshAgent>() as NavMeshAgent; 
         currentSpeed = navMeshAgent.speed;
-
-        
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Time.timeScale > 0)
         {
-            UpdateTarget(targetObject);
+            UpdateTarget(currentObject);
         }
     }
 
     void UpdateTarget(Transform targetObject)
     {
-        if (targetObject)
+        if (targetObject && targetObject.gameObject.activeInHierarchy)
         {
             navMeshAgent.speed = currentSpeed;
             navMeshAgent.destination = targetObject.position;
@@ -46,13 +42,14 @@ public class EnemyController : MonoBehaviour
         {
             navMeshAgent.speed = 0;
             animator.SetBool("Run", false);
-
+            GetNewTarget();
         }
     }
 
-    void GetNewTarget(Transform targetObject)
+    void GetNewTarget()
     {
-
+        currentObject = GameController.Instance.GetNewTarget(gameObject.transform);
+        Debug.Log("Поиск целей  " + currentObject.gameObject);
     }
 
 }
