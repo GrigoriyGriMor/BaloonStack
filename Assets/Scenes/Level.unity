@@ -2895,6 +2895,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 3072140885563504455, guid: 68a04310bc908bd4fb47d62234c6e34c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072140885563504455, guid: 68a04310bc908bd4fb47d62234c6e34c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072140885563504455, guid: 68a04310bc908bd4fb47d62234c6e34c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 3186950165538934549, guid: 68a04310bc908bd4fb47d62234c6e34c, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -2938,6 +2950,18 @@ PrefabInstance:
     - target: {fileID: 3955323555329740159, guid: 68a04310bc908bd4fb47d62234c6e34c, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955323555329740159, guid: 68a04310bc908bd4fb47d62234c6e34c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955323555329740159, guid: 68a04310bc908bd4fb47d62234c6e34c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955323555329740159, guid: 68a04310bc908bd4fb47d62234c6e34c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4561919705688026810, guid: 68a04310bc908bd4fb47d62234c6e34c, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -3065,7 +3089,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7872542903833878573, guid: 68a04310bc908bd4fb47d62234c6e34c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7905733124052019557, guid: 68a04310bc908bd4fb47d62234c6e34c, type: 3}
       propertyPath: m_IsActive
@@ -3079,9 +3103,41 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 8040358044695328812, guid: 68a04310bc908bd4fb47d62234c6e34c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040358044695328812, guid: 68a04310bc908bd4fb47d62234c6e34c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040358044695328812, guid: 68a04310bc908bd4fb47d62234c6e34c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040358044695328812, guid: 68a04310bc908bd4fb47d62234c6e34c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040358044695328812, guid: 68a04310bc908bd4fb47d62234c6e34c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 8097885829234503897, guid: 68a04310bc908bd4fb47d62234c6e34c, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097885829234503897, guid: 68a04310bc908bd4fb47d62234c6e34c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097885829234503897, guid: 68a04310bc908bd4fb47d62234c6e34c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8097885829234503897, guid: 68a04310bc908bd4fb47d62234c6e34c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 8207104582224003636, guid: 68a04310bc908bd4fb47d62234c6e34c, type: 3}
       propertyPath: currentPlayer
