@@ -40,7 +40,7 @@ public class PlatformForBallons : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.GetComponent<CheckerAir>())
         {
             currentPlayer = collision.gameObject;
             InvokeRepeating("InflatingBallons", 2, deltaTime);
@@ -50,7 +50,7 @@ public class PlatformForBallons : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.GetComponent<CheckerAir>())
         {
             CancelInvoke();
             currentPlayer = null;
