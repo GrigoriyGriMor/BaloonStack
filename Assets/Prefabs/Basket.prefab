@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1340569036364348211}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 0.1, z: 5}
+  m_LocalScale: {x: 5, y: 0.01, z: 5}
   m_Children: []
   m_Father: {fileID: 3344309693908920529}
   m_RootOrder: 0
@@ -109,7 +109,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
-  currentPlayer: {fileID: 0}
   deltaTime: 2
   pointSpawnBallon: {fileID: 303685621802675327}
   gameObjectBaloon: {fileID: 6538154764110580870}
@@ -219,7 +218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6243cd9352fe0324f8edcd327adb2a83, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.85
+      value: 0.77
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6243cd9352fe0324f8edcd327adb2a83, type: 3}
       propertyPath: m_LocalPosition.z
@@ -235,11 +234,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6243cd9352fe0324f8edcd327adb2a83, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.27059805
+      value: -0.27059805
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6243cd9352fe0324f8edcd327adb2a83, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.27059805
+      value: -0.27059805
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6243cd9352fe0324f8edcd327adb2a83, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -247,7 +246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6243cd9352fe0324f8edcd327adb2a83, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 45
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6243cd9352fe0324f8edcd327adb2a83, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
