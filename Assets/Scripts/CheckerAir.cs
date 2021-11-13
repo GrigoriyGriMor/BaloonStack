@@ -16,7 +16,6 @@ public class CheckerAir : MonoBehaviour
 
     public int countAir;
 
-
     private void Start()
     {
         moveController = GetComponent<MoveController>();
@@ -29,11 +28,13 @@ public class CheckerAir : MonoBehaviour
             AddAir(other);
         }
     }
+
     void AddAir(Collider other)
     {
         countAir += other.GetComponent<AirScript>().countAir;
         countAir = Mathf.Clamp(countAir, 0, maxCountAir);
         other.gameObject.SetActive(false);
+
         if (moveController)
         {
             moveController.ActiveHardRun(countAir);
@@ -51,9 +52,5 @@ public class CheckerAir : MonoBehaviour
         countAir = Mathf.Clamp(countAir, 0, maxCountAir);
         return result;
     }
-
-
-
-
 
 }

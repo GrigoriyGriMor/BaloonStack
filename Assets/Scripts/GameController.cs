@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour
 
     [Header("Массив шариков")]
     [SerializeField]
-    private List<GameObject> arrayBaloons;
+    private List<Transform> arrayBaloons;
 
     public int countAirPlayer
     {
@@ -56,13 +56,25 @@ public class GameController : MonoBehaviour
     {
         Transform currentPosition = null;
 
-       // foreach (Transform )
-      //  {
+        if (arrayBaloons.Count > 0)
+        {
+            float lastPosition = Vector3.Distance(arrayBaloons[0].transform.position, targetObject.transform.position); ;
 
-     //   }
+            foreach (Transform currentBaloon in arrayBaloons)
+            {
+                float currentDistance = Vector3.Distance(currentBaloon.transform.position, targetObject.transform.position);
 
+                if (currentBaloon.gameObject.activeInHierarchy)
+                {
+                    if (lastPosition > currentDistance)
+                    {
+                        currentPosition = currentBaloon;
+                    }
+                }
+            }
 
+        }
         return currentPosition;
     }
-   
+
 }
