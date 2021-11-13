@@ -5,13 +5,13 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
-public class StartGame : MonoBehaviour, IPointerDownHandler
+public class StartGame : MonoBehaviour
 {
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnStartGame()
     {
         Debug.Log(" Start ");
         Time.timeScale = 1;
-      //  gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }
 
