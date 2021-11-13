@@ -13,7 +13,9 @@ public class GameController : MonoBehaviour
 
     [Header("ссылка на игрока")]
     public GameObject player;
-    private CheckerAir checkerAirPlayer;
+
+    [HideInInspector]
+    public CheckerAir checkerAirPlayer;
 
     [Header("ћассив противников ")]
     [SerializeField]
