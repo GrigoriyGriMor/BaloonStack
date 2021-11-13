@@ -14,6 +14,10 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private Animator animator;
 
+    [SerializeField]
+    [Header("Кол-во шаров для скачки")]
+    private int countBaloonsInflating;
+
     private float currentSpeed;
 
     void Start()
@@ -21,6 +25,7 @@ public class EnemyController : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>() as NavMeshAgent; 
         currentSpeed = navMeshAgent.speed;
     }
+
 
     void Update()
     {

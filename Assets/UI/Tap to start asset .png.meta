@@ -1,7 +1,16 @@
 fileFormatVersion: 2
 guid: d11045a1054d6754c8cd96588b463d3e
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 27468639186949619
+    second: Tap to start asset _0
+  - first:
+      213: -8271889788300396942
+    second: Tap to start asset _1
+  - first:
+      213: 5284977804507837959
+    second: Tap to start asset _2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -89,11 +98,74 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Tap to start asset _0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 4
+        width: 507
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f59331f496916000800000000000000
+      internalID: 27468639186949619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tap to start asset _1
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 103
+        width: 103
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2767c2b5018543d80800000000000000
+      internalID: -8271889788300396942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tap to start asset _2
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 6
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 706738bef43085940800000000000000
+      internalID: 5284977804507837959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: fded87b3de36f48408b7681dc9f9eee6
     internalID: 0
     vertices: []
     indices: 
