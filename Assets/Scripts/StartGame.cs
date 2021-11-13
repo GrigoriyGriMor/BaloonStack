@@ -12,6 +12,7 @@ public class StartGame : MonoBehaviour
         Debug.Log(" Start ");
         Time.timeScale = 1;
         gameObject.SetActive(false);
+        GameController.Instance.isPlayGame = true;
     }
 }
 
