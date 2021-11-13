@@ -34,7 +34,10 @@ public class CheckerAir : MonoBehaviour
         countAir += other.GetComponent<AirScript>().countAir;
         countAir = Mathf.Clamp(countAir, 0, maxCountAir);
         other.gameObject.SetActive(false);
-        moveController.ActiveHardRun(countAir);
+        if (moveController)
+        {
+            moveController.ActiveHardRun(countAir);
+        }
     }
 
     public bool DelAir(int countAirDel)
