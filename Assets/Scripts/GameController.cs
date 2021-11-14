@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 /// <summary>
-/// Game Controller
+/// Game Controller логика игры,содержит ссылки на игрока, шарики и противников
 /// </summary>
 
 public class GameController : MonoBehaviour
@@ -87,6 +87,18 @@ public class GameController : MonoBehaviour
         }
         return currentPosition;
     }
+
+    public Transform GetNewTargetRamdom(Transform positionObject)
+    {
+        Transform currentPosition = null;
+        if (arrayBaloons.Count > 0)
+        {
+            currentPosition = arrayBaloons[Random.Range(0, arrayBaloons.Count - 1)];
+        }
+
+        return currentPosition;
+    }
+
 
 
 }

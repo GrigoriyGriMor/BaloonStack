@@ -15,15 +15,15 @@ public class MoveController : MonoBehaviour
 
     //[SerializeField] private float rotateSpeedMultiple = 5;
 
-    [Header("MoveForward")]
+    [Header("")]
     [SerializeField]
-    private float speedBegin = 1.0f;
+    private float speedBegin = 3.0f;
 
     [Header("Коэфициент уеньшения скорости")]
     [SerializeField]
-    private int multiplySpeed = 3;
+    private float multiplySpeed = 3;
 
-    [Header("Кол-во шариков RunHard")]
+    [Header("Кол-во шариков режим RunHard")]
     [SerializeField]
     private int maxRunHard = 2;
 
@@ -41,14 +41,12 @@ public class MoveController : MonoBehaviour
     {
         if (GameController.Instance.checkerAirPlayer.countAir >= maxRunHard)
         {
-            //ActiveHardRun(multiplySpeed);
+            ActiveHardRun(multiplySpeed);
         }
         else
         {
-          //  ActiveEaseRun();
+            ActiveEaseRun();
         }
-        ActiveEaseRun();
-
     }
 
     void FixedUpdate()
@@ -85,7 +83,7 @@ public class MoveController : MonoBehaviour
             if (animator)
             {
                 animator.SetBool("Run", false);
-                //animator.SetBool("RunHard", false);
+                animator.SetBool("RunHard", false);
 
             }
             //        anim[i].SetBool("HardRun", false);
@@ -108,7 +106,7 @@ public class MoveController : MonoBehaviour
             }
             else
             {
-               // animator.SetBool("RunHard", true);
+               animator.SetBool("RunHard", true);
             }
             //            anim[i].SetBool("HardRun", true);
         }
@@ -121,15 +119,18 @@ public class MoveController : MonoBehaviour
     {
         //for (int i = 0; i < anim.Length; i++)
         //    anim[i].SetBool("HardRun", true);
-        //animator.SetBool("RunHard", true);
+       // animator.SetBool("RunHard", true);
+        animator.SetBool("Run", false);
         speed = speedBegin / multiply;   
+      //  Debug.Log("Mode Hard");
     }
 
     public void ActiveEaseRun()
     {
         //for (int i = 0; i < anim.Length; i++)
         //    anim[i].SetBool("HardRun", false);
-        //animator.SetBool("RunHard", false);
+        animator.SetBool("RunHard", false);
+      //  Debug.Log("Easy Hard");
         speed = speedBegin;
     }
 

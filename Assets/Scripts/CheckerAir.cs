@@ -44,13 +44,15 @@ public class CheckerAir : MonoBehaviour
     public bool DelAir(int countAirDel)
     {
         bool result = false;
+
         if (countAir > 0)
         {
             result = true;
         }
+
         countAir -= countAirDel;
         countAir = Mathf.Clamp(countAir, 0, maxCountAir);
         return result;
     }
-
+   
 }
