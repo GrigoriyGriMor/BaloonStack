@@ -15,7 +15,7 @@ public class MoveController : MonoBehaviour
 
     //[SerializeField] private float rotateSpeedMultiple = 5;
 
-    [Header("MoveForward")]
+    [Header("")]
     [SerializeField]
     private float speedBegin = 3.0f;
 
@@ -23,7 +23,7 @@ public class MoveController : MonoBehaviour
     [SerializeField]
     private float multiplySpeed = 3;
 
-    [Header("Кол-во шариков RunHard")]
+    [Header("Кол-во шариков режим RunHard")]
     [SerializeField]
     private int maxRunHard = 2;
 
@@ -47,9 +47,6 @@ public class MoveController : MonoBehaviour
         {
             ActiveEaseRun();
         }
-
-        //ActiveEaseRun();
-
     }
 
     void FixedUpdate()
@@ -125,7 +122,7 @@ public class MoveController : MonoBehaviour
        // animator.SetBool("RunHard", true);
         animator.SetBool("Run", false);
         speed = speedBegin / multiply;   
-        Debug.Log("Mode Hard");
+      //  Debug.Log("Mode Hard");
     }
 
     public void ActiveEaseRun()
@@ -133,7 +130,7 @@ public class MoveController : MonoBehaviour
         //for (int i = 0; i < anim.Length; i++)
         //    anim[i].SetBool("HardRun", false);
         animator.SetBool("RunHard", false);
-        Debug.Log("Easy Hard");
+      //  Debug.Log("Easy Hard");
         speed = speedBegin;
     }
 

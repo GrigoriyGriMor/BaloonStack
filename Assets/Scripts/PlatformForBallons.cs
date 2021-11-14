@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// скрипт весит на платформе с шарами
+/// </summary>
 public class PlatformForBallons : MonoBehaviour
 {
     [SerializeField]
     private bool isPlayer;
+
 
     private GameObject currentPlayer;
 
@@ -25,19 +29,28 @@ public class PlatformForBallons : MonoBehaviour
     {
         //Сколько воздуха забираем
         int countAirDel = 1;
+
         if (currentPlayer.GetComponent<CheckerAir>().DelAir(countAirDel))
         {
             gameObjectBaloon.transform.position = pointSpawnBallon.position;
         }
+
+
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        //Debug.Log(collision.gameObject.name);
         if (collision.gameObject.GetComponent<CheckerAir>())
         {
             currentPlayer = collision.gameObject;
-            InvokeRepeating("InflatingBallons", 2, deltaTime);
+            if (currentPlayer.GetComponent<EnemyController>())
+            {
+                currentPlayer.GetComponent<EnemyController>().isInflating = true;
+            }
+
             isPlayer = true;
+            InvokeRepeating("InflatingBallons", 2, deltaTime);
         }
     }
 
@@ -48,6 +61,7 @@ public class PlatformForBallons : MonoBehaviour
             CancelInvoke();
             currentPlayer = null;
             isPlayer = false;
+
         }
     }
 }
