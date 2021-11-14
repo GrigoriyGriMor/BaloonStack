@@ -507,8 +507,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visualPlayer: {fileID: 802762240}
   speedBegin: 3
+  multiplySpeed: 3
+  maxRunHard: 2
   speed: 0.3
-  ratioSpeed: 50
   animator: {fileID: 346089036}
 --- !u!136 &141788358
 CapsuleCollider:
@@ -1040,6 +1041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 141788355}
+  checkerAirPlayer: {fileID: 0}
   arrayEnemys: []
   arrayBaloons:
   - {fileID: 560682869}
@@ -2689,7 +2691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3643165222148580548, guid: 7777d7dede6392543b9519a645de04ff, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3697527564487010800, guid: 7777d7dede6392543b9519a645de04ff, type: 3}
       propertyPath: m_Name
