@@ -120,9 +120,9 @@ MonoBehaviour:
   countBaloonsInflating: 3
   baloonsInflating: 0
   pointInflating: {fileID: 0}
-  maxRunHard: 5
+  maxRunHard: 3
   speedBegin: 3
-  multiplySpeed: 2
+  multiplySpeed: 1.5
   modeBot: 0
 --- !u!1 &3643165222674599431
 GameObject:
