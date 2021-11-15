@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8929469835470283393}
   - component: {fileID: 5245118003396103723}
   - component: {fileID: 2953626988185875142}
-  - component: {fileID: 1597506409859516559}
   - component: {fileID: 3465861699052212937}
+  - component: {fileID: 5557257884727965482}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -83,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1597506409859516559
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1340569036364348211}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.7247443, y: 1, z: 0.70855284}
-  m_Center: {x: 0.13762794, y: 0, z: -0.14572373}
 --- !u!114 &3465861699052212937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,9 +96,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
-  deltaTime: 2
+  deltaTime: 1
   pointSpawnBallon: {fileID: 303685621802675327}
   gameObjectBaloon: {fileID: 6538154764110580870}
+--- !u!65 &5557257884727965482
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340569036364348211}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1710655400685817117
 GameObject:
   m_ObjectHideFlags: 0
