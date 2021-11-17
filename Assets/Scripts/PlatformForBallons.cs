@@ -19,9 +19,10 @@ public class PlatformForBallons : MonoBehaviour
     [SerializeField]
     private float deltaTime = 2.0f;
 
-    [Header("Точка спавна шаров")]
-    [SerializeField]
-    private Transform pointSpawnBallon;
+    //[Header("Точка спавна шаров")]
+    //[SerializeField]
+    //private Transform pointSpawnBallon;
+
 
     private int currentIndex;
 
