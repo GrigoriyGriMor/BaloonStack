@@ -10,6 +10,8 @@ public class PlatformForBallons : MonoBehaviour
     [SerializeField]
     private bool isPlayer;
 
+    [SerializeField]
+    private ScriptSharik[] arrayBaloons;
 
     private GameObject currentPlayer;
 
@@ -21,9 +23,24 @@ public class PlatformForBallons : MonoBehaviour
     [SerializeField]
     private Transform pointSpawnBallon;
 
-    [Header("Обьект Шар")]
-    [SerializeField]
-    private GameObject gameObjectBaloon;
+    private int currentIndex;
+
+    //[Header("Обьект Шар")]
+    //[SerializeField]
+    //private GameObject gameObjectBaloon;
+
+    private void Start()
+    {
+        GameObject parentObject = transform.parent.gameObject;
+        arrayBaloons = parentObject.GetComponentsInChildren<ScriptSharik>();
+
+        foreach (ScriptSharik compObject in arrayBaloons)
+        {
+            compObject.gameObject.SetActive(false);
+        }
+
+    }
+
 
     void InflatingBallons()
     {
@@ -32,7 +49,9 @@ public class PlatformForBallons : MonoBehaviour
 
         if (currentPlayer.GetComponent<CheckerAir>().DelAir(countAirDel))
         {
-            gameObjectBaloon.transform.position = pointSpawnBallon.position;
+            SetBalloon();
+
+            //gameObjectBaloon.transform.position = pointSpawnBallon.position;
         }
 
 
@@ -64,4 +83,25 @@ public class PlatformForBallons : MonoBehaviour
 
         }
     }
+
+    void SetBalloon()
+    {
+        GameObject currnetObject;
+
+        //for (; ;)
+        // {
+        //currnetObject = arrayBaloons[Random.Range(0, arrayBaloons.Length)].gameObject;
+        currnetObject = arrayBaloons[currentIndex].gameObject;
+
+        if (!currnetObject.activeInHierarchy)
+        {
+            currnetObject.SetActive(true);
+            currentIndex++;
+            currentIndex = Mathf.Clamp(currentIndex, 0, arrayBaloons.Length - 1);
+            return;
+        }
+
+        //}
+    }
+
 }
