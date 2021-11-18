@@ -36,7 +36,7 @@ public class PlatformForBallons : MonoBehaviour
     //[SerializeField]
     //private GameObject gameObjectBaloon;
 
-    private void Start()
+    private void Awake()
     {
         GameObject parentObject = transform.parent.gameObject;
         arrayBaloons = parentObject.GetComponentsInChildren<ScriptSharik>();

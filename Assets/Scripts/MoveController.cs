@@ -34,7 +34,8 @@ public class MoveController : MonoBehaviour
 
     private SkinnedMeshRenderer skinnedMeshRenderer;
 
-    
+    private CheckerAir checkerAirPlayer;
+
     private int countAirPlayer;  // сколько у игрока воздуха
         
 
@@ -46,6 +47,7 @@ public class MoveController : MonoBehaviour
     {
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         animator = GetComponentInChildren<Animator>();
+        checkerAirPlayer = GetComponent<CheckerAir>();
     }
 
     private void Update()
@@ -182,8 +184,8 @@ public class MoveController : MonoBehaviour
 
     public void SetValueBlendShapes()
     {
-        countAirPlayer = GameController.Instance.checkerAirPlayer.countAir; // сколько у игрока воздуха
-        int maxCountAirPlayer = GameController.Instance.checkerAirPlayer.maxCountAir; // сколько мах у игрока воздуха
+        countAirPlayer = checkerAirPlayer.countAir; // сколько у игрока воздуха
+        int maxCountAirPlayer = checkerAirPlayer.maxCountAir; // сколько мах у игрока воздуха
 
         float valueBlendShape = (float)countAirPlayer / maxCountAirPlayer * 100; // значение BlendShape в процентах
 
