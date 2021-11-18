@@ -19,6 +19,12 @@ public class PlatformForBallons : MonoBehaviour
     [SerializeField]
     private float deltaTime = 2.0f;
 
+    [Header("Мах кол-во шаров на платформе")]
+    public int maxCountBallons;
+
+    [HideInInspector]
+    public int currentCountBallonsPlanform;
+
     //[Header("Точка спавна шаров")]
     //[SerializeField]
     //private Transform pointSpawnBallon;
@@ -45,14 +51,14 @@ public class PlatformForBallons : MonoBehaviour
 
     void InflatingBallons()
     {
-        //Сколько воздуха забираем
-        int countAirDel = 1;
+       
+        int countAirDel = 1;   //Сколько воздуха забираем
 
         if (currentPlayer.GetComponent<CheckerAir>().DelAir(countAirDel))
         {
             SetBalloon();
+            currentCountBallonsPlanform++;
 
-            //gameObjectBaloon.transform.position = pointSpawnBallon.position;
         }
 
 
@@ -89,9 +95,6 @@ public class PlatformForBallons : MonoBehaviour
     {
         GameObject currnetObject;
 
-        //for (; ;)
-        // {
-        //currnetObject = arrayBaloons[Random.Range(0, arrayBaloons.Length)].gameObject;
         currnetObject = arrayBaloons[currentIndex].gameObject;
 
         if (!currnetObject.activeInHierarchy)
@@ -101,8 +104,6 @@ public class PlatformForBallons : MonoBehaviour
             currentIndex = Mathf.Clamp(currentIndex, 0, arrayBaloons.Length - 1);
             return;
         }
-
-        //}
     }
 
 }

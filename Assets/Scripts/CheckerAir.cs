@@ -12,7 +12,7 @@ public class CheckerAir : MonoBehaviour
 
     [SerializeField]
     [Header("Мах кол - во воздуха")]
-    private int maxCountAir = 10;
+    public int maxCountAir = 10;
 
     public int countAir;
 

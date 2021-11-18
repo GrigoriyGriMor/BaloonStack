@@ -24,9 +24,18 @@ public class GameController : MonoBehaviour
     [Header("Массив шариков")]
     public List<Transform> arrayBaloons;
 
+    [Header("Ссыль на панель конца игры")]
+    [SerializeField]
+    private GameObject refPanelEndGame;
+
+    [Header("Ссылка на платформу игрока")]
+    public PlatformForBallons platformForBallonsPlayer;
+
+    [Header("Ссылка на платформу Бота")]
+    public PlatformForBallons platformForBallonsBot;
+
     [HideInInspector]
     public bool isPlayGame;
-
 
 
     public int countAirPlayer
@@ -54,9 +63,9 @@ public class GameController : MonoBehaviour
     void Start()
     {
         checkerAirPlayer = player.GetComponent<CheckerAir>();
+        refPanelEndGame.SetActive(false);
         Time.timeScale = 0;
         isPlayGame = false;
-
     }
 
     /// <summary>
@@ -95,9 +104,49 @@ public class GameController : MonoBehaviour
         {
             currentPosition = arrayBaloons[Random.Range(0, arrayBaloons.Count - 1)];
         }
-
         return currentPosition;
     }
+
+    private void Update()
+    {
+        UpdateGame();
+    }
+
+    public void UpdateGame()
+    {
+        if (CheckCountBallonsPlayers(platformForBallonsBot) || CheckCountBallonsPlayers(platformForBallonsPlayer))
+        {
+            refPanelEndGame.SetActive(true);
+            EndGame();
+
+        }
+    }
+
+   private bool CheckCountBallonsPlayers(PlatformForBallons platformForBallons)
+    {
+        bool result = false;
+        if (platformForBallons.currentCountBallonsPlanform == platformForBallons.maxCountBallons)
+        {
+            result = true;
+        }
+
+        return result;
+    } 
+
+
+    public void StartGame()
+    {
+        Time.timeScale = 1;
+        isPlayGame = true;
+    }
+
+
+    public void EndGame()
+    {
+        Time.timeScale = 0;
+        isPlayGame = false;
+    }
+
 
 
 
