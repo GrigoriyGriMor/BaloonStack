@@ -23,6 +23,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private Transform currentTarget;
 
+    private SkinnedMeshRenderer skinnedMeshRenderer;
 
     public bool isInflating; // началась скачка воздуха
 
@@ -66,6 +67,7 @@ public class EnemyController : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>() as NavMeshAgent;
         checkerAir = GetComponent<CheckerAir>();
         animator = GetComponentInChildren<Animator>();
+        skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
     }
 
 
@@ -82,7 +84,6 @@ public class EnemyController : MonoBehaviour
                 ActiveEaseRun();
             }
 
-
             UpdateMove();
             UpdateInflating();
         }
@@ -91,6 +92,8 @@ public class EnemyController : MonoBehaviour
 
     void UpdateMove()
     {
+        SetValueBlendShapes();
+
         if (currentTarget)
         {
             if (currentTarget.gameObject.activeInHierarchy)
@@ -141,6 +144,7 @@ public class EnemyController : MonoBehaviour
         animator.SetBool("Run", false);
         animator.SetBool("RunHard", false);
     }
+
 
     /// <summary>
     /// поиск цели
@@ -219,6 +223,16 @@ public class EnemyController : MonoBehaviour
                 UpdateTarget();
             }
         }
+    }
+
+    public void SetValueBlendShapes()
+    {
+        int countAirPlayer = checkerAir.countAir; // сколько у игрока воздуха
+        int maxCountAirPlayer = GameController.Instance.checkerAirPlayer.maxCountAir; // сколько мах у игрока воздуха
+
+        float valueBlendShape = (float)countAirPlayer / maxCountAirPlayer * 100; // значение BlendShape в процентах
+
+        skinnedMeshRenderer.SetBlendShapeWeight(0, valueBlendShape); // значение  BlendShape
     }
 }
 

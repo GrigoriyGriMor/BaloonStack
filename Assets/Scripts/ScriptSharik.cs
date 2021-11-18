@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class ScriptSharik : MonoBehaviour
 {
-
+    [Header("“очка спавна шаров")]
     [SerializeField]
-    private Transform pointStartCord;
+    private Transform spawnBallons;
+
+    [Header("“очка начала веревки")]
+    [SerializeField]
+    private Transform anchorCord;
+
+    [Header("‘иниш полета шаров")]
+    [SerializeField]
+    private Transform finishFlyBallons;
 
     [SerializeField]
     private Transform PointEndCord;
 
-    private LineRenderer lineRenderer;
+    [Header("¬рем€ перемещение шара после надувани€")]
+    [SerializeField]
+    private float timeMoveAnchorCord = 0.5f;
+
     private Rigidbody rigidbody;
+    private Animator animator;
+    private LineRenderer lineRenderer;
+    private SpringJoint springJoint;
+    private Transform transformBallon;
+
+    private bool isFlyBallons;
 
     [SerializeField]
     private float speedMoveBallon = 1;
@@ -20,17 +37,47 @@ public class ScriptSharik : MonoBehaviour
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         lineRenderer = GetComponent<LineRenderer>();
         rigidbody = GetComponent<Rigidbody>();
+        springJoint = GetComponent<SpringJoint>();
+
+        //animator.enabled = false;
+        lineRenderer.enabled = false;
+
+        transformBallon = transform;
+        transformBallon.position = spawnBallons.position;
+
+        Invoke("AchorCord", timeMoveAnchorCord);
     }
 
     void Update()
     {
-        rigidbody.AddForce(transform.forward * speedMoveBallon) ;
+        if (lineRenderer.enabled)
+        {
+            MoveBallons();
+        }
+    }
 
-
-        lineRenderer.SetPosition(0, pointStartCord.position);  //0-начальна€ точка линии
+    void MoveBallons()
+    {
+        rigidbody.AddForce(transform.forward * speedMoveBallon);
+        lineRenderer.SetPosition(0, anchorCord.position);  //0-начальна€ точка линии
         lineRenderer.SetPosition(1, PointEndCord.position);   //1-конечна€ точка линии
     }
+
+    void AchorCord()
+    {
+        //transformBallon.position = anchorCord.position;
+        StartFlyBallons();
+    }
+
+    void StartFlyBallons()
+    {
+        lineRenderer.enabled = true;
+    }
+
+
+
 
 }

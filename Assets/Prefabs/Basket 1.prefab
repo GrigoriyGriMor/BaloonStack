@@ -258,9 +258,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
+  arrayBaloons: []
   deltaTime: 1
   pointSpawnBallon: {fileID: 303685621802675327}
-  gameObjectBaloon: {fileID: 6538154764110580870}
 --- !u!65 &5557257884727965482
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -375,7 +375,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7760597549121202126
 Transform:
   m_ObjectHideFlags: 0
@@ -416,7 +416,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3344309693908920529}
   m_Layer: 0
-  m_Name: Basket
+  m_Name: Basket 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

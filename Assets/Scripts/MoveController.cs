@@ -15,6 +15,7 @@ public class MoveController : MonoBehaviour
 
     //[SerializeField] private float rotateSpeedMultiple = 5;
 
+
     [Header("")]
     [SerializeField]
     private float speedBegin = 3.0f;
@@ -27,19 +28,33 @@ public class MoveController : MonoBehaviour
     [SerializeField]
     private int maxRunHard = 2;
 
-    [SerializeField]
     private float speed;
 
-    [SerializeField] private Animator animator;
+    private Animator animator;
+
+    private SkinnedMeshRenderer skinnedMeshRenderer;
+
+    private CheckerAir checkerAirPlayer;
+
+    private int countAirPlayer;  // сколько у игрока воздуха
+        
 
     private void Awake()
     {
+    }
 
+    private void Start()
+    {
+        skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+        animator = GetComponentInChildren<Animator>();
+        checkerAirPlayer = GetComponent<CheckerAir>();
     }
 
     private void Update()
     {
-        if (GameController.Instance.checkerAirPlayer.countAir >= maxRunHard)
+       
+
+        if (countAirPlayer >= maxRunHard)
         {
             ActiveHardRun(multiplySpeed);
         }
@@ -47,11 +62,14 @@ public class MoveController : MonoBehaviour
         {
             ActiveEaseRun();
         }
+
+
     }
 
     void FixedUpdate()
     {
         if (!GameController.Instance) return;
+
         Move();
     }
 
@@ -71,6 +89,8 @@ public class MoveController : MonoBehaviour
 
     private void Move()
     {
+        SetValueBlendShapes();
+
         float horizMove = JoystickStick.Instance.HorizontalAxis();
         float verticalMove = JoystickStick.Instance.VerticalAxis();
 
@@ -100,13 +120,13 @@ public class MoveController : MonoBehaviour
         //    for (int i = 0; i < anim.Length; i++)
         if (animator)
         {
-            if  (speed == speedBegin)
+            if (speed == speedBegin)
             {
                 animator.SetBool("Run", true);
             }
             else
             {
-               animator.SetBool("RunHard", true);
+                animator.SetBool("RunHard", true);
             }
             //            anim[i].SetBool("HardRun", true);
         }
@@ -119,10 +139,11 @@ public class MoveController : MonoBehaviour
     {
         //for (int i = 0; i < anim.Length; i++)
         //    anim[i].SetBool("HardRun", true);
-       // animator.SetBool("RunHard", true);
+        // animator.SetBool("RunHard", true);
         animator.SetBool("Run", false);
-        speed = speedBegin / multiply;   
-      //  Debug.Log("Mode Hard");
+        speed = speedBegin / multiply;
+        // skinnedMeshRenderer.SetBlendShapeWeight(0, 50);
+        //  Debug.Log("Mode Hard");
     }
 
     public void ActiveEaseRun()
@@ -130,7 +151,7 @@ public class MoveController : MonoBehaviour
         //for (int i = 0; i < anim.Length; i++)
         //    anim[i].SetBool("HardRun", false);
         animator.SetBool("RunHard", false);
-      //  Debug.Log("Easy Hard");
+        //  Debug.Log("Easy Hard");
         speed = speedBegin;
     }
 
@@ -159,5 +180,15 @@ public class MoveController : MonoBehaviour
         //        anim[i].SetBool("LoseGame", true);
         //    }
         //}
+    }
+
+    public void SetValueBlendShapes()
+    {
+        countAirPlayer = checkerAirPlayer.countAir; // сколько у игрока воздуха
+        int maxCountAirPlayer = checkerAirPlayer.maxCountAir; // сколько мах у игрока воздуха
+
+        float valueBlendShape = (float)countAirPlayer / maxCountAirPlayer * 100; // значение BlendShape в процентах
+
+    skinnedMeshRenderer.SetBlendShapeWeight(0, valueBlendShape); // значение  BlendShape
     }
 }
