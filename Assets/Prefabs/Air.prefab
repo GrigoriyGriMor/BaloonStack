@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2829684765520225963}
   - component: {fileID: 2642329984248886020}
   - component: {fileID: 5728332427717737984}
-  - component: {fileID: 2905783237247739969}
+  - component: {fileID: 5748945873821194654}
   m_Layer: 0
   m_Name: Air
   m_TagString: Air
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2942777057466187376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.44499913, y: 2.3248487, z: 0.26227212}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   color: {r: 0, g: 0, b: 0, a: 0}
   id: 1
   countAir: 1
---- !u!65 &2905783237247739969
+--- !u!65 &5748945873821194654
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
