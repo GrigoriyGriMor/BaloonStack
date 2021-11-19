@@ -24,9 +24,13 @@ public class GameController : MonoBehaviour
     [Header("Массив шариков")]
     public List<Transform> arrayBaloons;
 
-    [Header("Ссыль на панель конца игры")]
+    [Header("Ссыль на панель Победы игрока")]
     [SerializeField]
-    private GameObject refPanelEndGame;
+    private GameObject refPanelWinGame;
+
+    [Header("Ссыль на панель Поражения игрока")]
+    [SerializeField]
+    private GameObject refPanelLoseGame;
 
     [Header("Ссылка на платформу игрока")]
     public PlatformForBallons platformForBallonsPlayer;
@@ -63,7 +67,6 @@ public class GameController : MonoBehaviour
     void Start()
     {
         checkerAirPlayer = player.GetComponent<CheckerAir>();
-        refPanelEndGame.SetActive(false);
         Time.timeScale = 0;
         isPlayGame = false;
     }
@@ -109,20 +112,39 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        UpdateGame();
-    }
-
-    public void UpdateGame()
-    {
-        if (CheckCountBallonsPlayers(platformForBallonsBot) || CheckCountBallonsPlayers(platformForBallonsPlayer))
+        if (isPlayGame)
         {
-            refPanelEndGame.SetActive(true);
-            EndGame();
+            UpdateGame();
 
         }
     }
 
-   private bool CheckCountBallonsPlayers(PlatformForBallons platformForBallons)
+
+    /// <summary>
+    /// обновления игры
+    /// </summary>
+    public void UpdateGame()
+    {
+        if (CheckCountBallonsPlayers(platformForBallonsBot))
+        {
+            LoseGame();
+            EndGame();
+        }
+
+        if (CheckCountBallonsPlayers(platformForBallonsPlayer))
+        {
+            WinGame();
+            EndGame();
+        }
+
+    }
+
+    /// <summary>
+    /// Проверяем количество надутых шаров на платформе
+    /// </summary>
+    /// <param name="platformForBallons"></param>
+    /// <returns></returns>
+    private bool CheckCountBallonsPlayers(PlatformForBallons platformForBallons)
     {
         bool result = false;
         if (platformForBallons.currentCountBallonsPlanform == platformForBallons.maxCountBallons)
@@ -131,23 +153,39 @@ public class GameController : MonoBehaviour
         }
 
         return result;
-    } 
+    }
 
-
+    /// <summary>
+    /// старт игры
+    /// </summary>
     public void StartGame()
     {
         Time.timeScale = 1;
         isPlayGame = true;
     }
 
-
+    /// <summary>
+    /// конец игры
+    /// </summary>
     public void EndGame()
     {
+        Debug.Log("End Game");
         Time.timeScale = 0;
         isPlayGame = false;
     }
 
+    void WinGame()
+    {
+        Debug.Log("Win Game");
 
+        refPanelWinGame.SetActive(true);
+    }
+
+    void LoseGame()
+    {
+        Debug.Log("Lose Game");
+        refPanelLoseGame.SetActive(true);
+    }
 
 
 }
