@@ -21,8 +21,8 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private List<GameObject> arrayEnemys;
 
-    [Header("Массив шариков")]
-    public List<Transform> arrayBaloons;
+    [Header("Массив воздуха")]
+    public List<Transform> arrayAirs;
 
     [Header("Ссыль на панель Победы игрока")]
     [SerializeField]
@@ -78,11 +78,11 @@ public class GameController : MonoBehaviour
     {
         Transform currentPosition = null;
 
-        if (arrayBaloons.Count > 0)
+        if (arrayAirs.Count > 0)
         {
             float lastPosition = 100;
 
-            foreach (Transform currentBaloon in arrayBaloons)
+            foreach (Transform currentBaloon in arrayAirs)
             {
                 float currentDistance = Vector3.Distance(currentBaloon.position, positionObject.position);
 
@@ -103,9 +103,9 @@ public class GameController : MonoBehaviour
     public Transform GetNewTargetRamdom(Transform positionObject)
     {
         Transform currentPosition = null;
-        if (arrayBaloons.Count > 0)
+        if (arrayAirs.Count > 0)
         {
-            currentPosition = arrayBaloons[Random.Range(0, arrayBaloons.Count - 1)];
+            currentPosition = arrayAirs[Random.Range(0, arrayAirs.Count - 1)];
         }
         return currentPosition;
     }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 
 
 /// <summary>
@@ -16,10 +16,7 @@ public class UiController : MonoBehaviour
 
     [Header("")]
     [SerializeField]
-    private Text currentCountBallonsPlatform;
-
-
-    
+    private TMP_Text currentCountBallonsPlatform;
 
     private void Update()
     {
