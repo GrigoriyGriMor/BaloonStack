@@ -1498,7 +1498,7 @@ MonoBehaviour:
   - {fileID: 68259186}
   - {fileID: 210629476}
   - {fileID: 1906372131}
-  refPanelEndGame: {fileID: 0}
+  refPanelEndGame: {fileID: 1139424626}
   platformForBallonsPlayer: {fileID: 1033932592}
   platformForBallonsBot: {fileID: 309949026}
   isPlayGame: 0
