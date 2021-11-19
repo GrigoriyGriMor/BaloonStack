@@ -24,6 +24,10 @@ public class GameController : MonoBehaviour
     [Header("Массив воздуха")]
     public List<Transform> arrayAirs;
 
+    [Header("Ссыль на панель результата")]
+    [SerializeField]
+    private GameObject refPanelResult;
+
     [Header("Ссыль на панель Победы игрока")]
     [SerializeField]
     private GameObject refPanelWinGame;
@@ -172,6 +176,7 @@ public class GameController : MonoBehaviour
         Debug.Log("End Game");
         Time.timeScale = 0;
         isPlayGame = false;
+        refPanelResult.SetActive(false);
     }
 
     void WinGame()
