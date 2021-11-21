@@ -246,6 +246,8 @@ public class PlatformForBallons : MonoBehaviour
         {
             isAction = true;
 
+            GameController.Instance.refPanelResult.SetActive(false);
+
             if (typeOfPlayer == TypeOfPlayer.Player)
             {
                 GameController.Instance.stateGame = StateGame.WinGame;

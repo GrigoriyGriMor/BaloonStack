@@ -33,9 +33,9 @@ public class GameController : MonoBehaviour
     [Header("Массив воздуха")]
     public List<Transform> arrayAirs;
 
-    [Header("Ссыль на панель результата")]
-    [SerializeField]
-    private GameObject refPanelResult;
+    //[Header("Ссыль на панель результата")]
+    //[SerializeField]
+    public GameObject refPanelResult;
 
     [Header("Ссыль на панель Победы игрока")]
     [SerializeField]
@@ -60,7 +60,6 @@ public class GameController : MonoBehaviour
 
     [HideInInspector]
     public StateGame stateGame;
-
 
 
     public int countAirPlayer
@@ -137,7 +136,6 @@ public class GameController : MonoBehaviour
         if (isPlayGame)
         {
             UpdateGame();
-
         }
     }
 
@@ -192,7 +190,7 @@ public class GameController : MonoBehaviour
         Debug.Log("End Game");
         //Time.timeScale = 0;
         isPlayGame = false;
-        refPanelResult.SetActive(false);
+        //refPanelResult.SetActive(false);
     }
 
     void WinGame()

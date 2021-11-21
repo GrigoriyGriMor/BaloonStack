@@ -643,12 +643,12 @@ GameObject:
   - component: {fileID: 126893882}
   - component: {fileID: 126893881}
   m_Layer: 5
-  m_Name: Text
+  m_Name: FPS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &126893880
 RectTransform:
   m_ObjectHideFlags: 0
@@ -713,7 +713,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '200
+  m_Text: '0
 
 '
 --- !u!222 &126893883
@@ -1700,7 +1700,7 @@ MonoBehaviour:
   refPanelLoseGame: {fileID: 6399413855546994097}
   platformForBallonsPlayer: {fileID: 222732520}
   platformForBallonsBot: {fileID: 1294898445}
-  delayOnPanelWinLose: 10
+  delayOnPanelWinLose: 5
   isPlayGame: 0
   stateGame: 0
 --- !u!1 &462600500 stripped
