@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum StateGame
+{
+    Game,
+    WinGame,
+    LoseGame
+}
+
 
 /// <summary>
 /// Game Controller логика игры,содержит ссылки на игрока, шарики и противников
@@ -9,6 +16,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+   
+
     public static GameController Instance;
 
     [Header("ссылка на игрока")]
@@ -42,8 +51,12 @@ public class GameController : MonoBehaviour
     [Header("Ссылка на платформу Бота")]
     public PlatformForBallons platformForBallonsBot;
 
-    [HideInInspector]
+    //[HideInInspector]
     public bool isPlayGame;
+
+    [HideInInspector]
+    public StateGame stateGame;
+
 
 
     public int countAirPlayer
@@ -73,6 +86,7 @@ public class GameController : MonoBehaviour
         checkerAirPlayer = player.GetComponent<CheckerAir>();
         Time.timeScale = 0;
         isPlayGame = false;
+        stateGame = StateGame.Game;
     }
 
     /// <summary>
@@ -129,13 +143,13 @@ public class GameController : MonoBehaviour
     /// </summary>
     public void UpdateGame()
     {
-        if (CheckCountBallonsPlayers(platformForBallonsBot))
+        if (stateGame == StateGame.LoseGame)
         {
             LoseGame();
             EndGame();
         }
 
-        if (CheckCountBallonsPlayers(platformForBallonsPlayer))
+        if (stateGame == StateGame.WinGame)
         {
             WinGame();
             EndGame();
