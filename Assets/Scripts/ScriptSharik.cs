@@ -31,6 +31,7 @@ public class ScriptSharik : MonoBehaviour
 
     private bool isFlyBallons;
 
+    [Header("Скорость перещения Шара")]
     [SerializeField]
     private float speedMoveBallon = 1;
 

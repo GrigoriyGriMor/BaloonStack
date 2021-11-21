@@ -16,7 +16,8 @@ public class EnemyController : MonoBehaviour
         FollowPlayer
     }
 
-    private NavMeshAgent navMeshAgent;
+    [HideInInspector]
+    public NavMeshAgent navMeshAgent;
 
     private CheckerAir checkerAir;
 

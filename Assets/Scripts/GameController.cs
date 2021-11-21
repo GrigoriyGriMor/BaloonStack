@@ -51,6 +51,10 @@ public class GameController : MonoBehaviour
     [Header("Ссылка на платформу Бота")]
     public PlatformForBallons platformForBallonsBot;
 
+    [Header("Задержка на появление панель Win/Lose")]
+    [SerializeField]
+    private float delayOnPanelWinLose = 1.0f;
+
     //[HideInInspector]
     public bool isPlayGame;
 
@@ -84,7 +88,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         checkerAirPlayer = player.GetComponent<CheckerAir>();
-        Time.timeScale = 0;
+       // Time.timeScale = 0;
         isPlayGame = false;
         stateGame = StateGame.Game;
     }
@@ -145,14 +149,12 @@ public class GameController : MonoBehaviour
     {
         if (stateGame == StateGame.LoseGame)
         {
-            LoseGame();
-            EndGame();
+            Invoke("LoseGame", delayOnPanelWinLose);
         }
 
         if (stateGame == StateGame.WinGame)
         {
-            WinGame();
-            EndGame();
+            Invoke("WinGame", delayOnPanelWinLose);
         }
 
     }
@@ -178,7 +180,7 @@ public class GameController : MonoBehaviour
     /// </summary>
     public void StartGame()
     {
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         isPlayGame = true;
     }
 
@@ -188,20 +190,21 @@ public class GameController : MonoBehaviour
     public void EndGame()
     {
         Debug.Log("End Game");
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         isPlayGame = false;
         refPanelResult.SetActive(false);
     }
 
     void WinGame()
     {
+        EndGame();
         Debug.Log("Win Game");
-
         refPanelWinGame.SetActive(true);
     }
 
     void LoseGame()
     {
+        EndGame();
         Debug.Log("Lose Game");
         refPanelLoseGame.SetActive(true);
     }
