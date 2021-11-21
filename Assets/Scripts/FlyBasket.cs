@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class FlyBasket : MonoBehaviour
 {
-
-
-
+    [SerializeField]
     private bool isOnFlyBasket;
 
     [Header("Скорость полета корзины")]
@@ -23,6 +21,9 @@ public class FlyBasket : MonoBehaviour
 
     private Camera mainCamera;            // ссыль на камеру
 
+    // [HideInInspector]
+    public bool isCanFly;
+
     private void Start()
     {
         thisTransform = GetComponent<Transform>();
@@ -30,17 +31,21 @@ public class FlyBasket : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         collisionObject = other.gameObject;
+
         if (collisionObject.GetComponent<CheckerAir>())
         {
-            Invoke("OnFlyBasket", 1.0f);
-            collisionObject.transform.parent = thisTransform.transform;
-            mainCamera.transform.parent = null;
-
+            if (isCanFly)
+            {
+                Invoke("OnFlyBasket", 1.0f);
+                collisionObject.transform.parent = thisTransform.transform;
+                mainCamera.transform.parent = null;
+            }
         }
     }
+
 
     private void OnFlyBasket()
     {

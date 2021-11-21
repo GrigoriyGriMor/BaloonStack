@@ -32,7 +32,7 @@ public class PlatformForBallons : MonoBehaviour
     [Header("Мах кол-во шаров на платформе")]
     public int maxCountBallons;
 
-    [HideInInspector]
+    //[HideInInspector]
     public int currentCountBallonsPlanform;  // текущие кол во надутых шаров
 
     [Header("Точка начала перещения")]
@@ -53,7 +53,7 @@ public class PlatformForBallons : MonoBehaviour
 
     [Header("Пауза перед закр двери на платформе")]
     [SerializeField]
-    private float timeCloseDoor = 1.0f;
+    private float delayCloseDoor = 1.0f;
 
     [Header("Тип игрока для платформы")]
     [SerializeField]
@@ -70,12 +70,16 @@ public class PlatformForBallons : MonoBehaviour
 
     private int currentIndex;               // индекс шара
 
+    [SerializeField]
+    private FlyBasket flyBasket;
+
     
 
     private void Awake()
     {
         parentObject = transform.parent.gameObject;
         arrayBaloons = parentObject.GetComponentsInChildren<ScriptSharik>();
+        flyBasket = parentObject.GetComponentInChildren<FlyBasket>();
 
         foreach (ScriptSharik compObject in arrayBaloons)
         {
@@ -95,21 +99,7 @@ public class PlatformForBallons : MonoBehaviour
             currentCountBallonsPlanform++;
         }
 
-        if (currentCountBallonsPlanform == maxCountBallons)
-        {
-            isAction = true;
-
-            if (typeOfPlayer == TypeOfPlayer.Player)
-            {
-                GameController.Instance.stateGame = StateGame.WinGame;
-            }
-            else if (typeOfPlayer == TypeOfPlayer.Enemy)
-            {
-                GameController.Instance.stateGame = StateGame.LoseGame;
-            }
-
-            Debug.Log(" Max count Ballons");
-        }
+        CheckCountBallons();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -117,14 +107,21 @@ public class PlatformForBallons : MonoBehaviour
         //Debug.Log(collision.gameObject.name);
         if (collision.gameObject.GetComponent<CheckerAir>())
         {
+            isPlayer = true;
+
             currentPlayer = collision.gameObject;
-            if (currentPlayer.GetComponent<EnemyController>())
+
+            if (currentPlayer.GetComponent<EnemyController>() && typeOfPlayer == TypeOfPlayer.Enemy)
             {
                 currentPlayer.GetComponent<EnemyController>().isInflating = true;
+                InvokeRepeating("InflatingBallons", 2, deltaTime);
             }
 
-            isPlayer = true;
-            InvokeRepeating("InflatingBallons", 2, deltaTime);
+            if (currentPlayer.GetComponent<MoveController>() && typeOfPlayer == TypeOfPlayer.Player)
+            {
+                InvokeRepeating("InflatingBallons", 2, deltaTime);
+            }
+            
         }
     }
 
@@ -180,7 +177,8 @@ public class PlatformForBallons : MonoBehaviour
                     break;
 
                 case 4:
-                    Invoke("OnFlyObject", timeCloseDoor);       // закрыли дверь с задержкой
+                    
+                    Invoke("OnFlyObject", delayCloseDoor);       // закрыли дверь с задержкой
                     action = 5; 
                     break;
 
@@ -192,6 +190,20 @@ public class PlatformForBallons : MonoBehaviour
     private bool MoveObject(GameObject currentObject, Transform endPosition)
     {
         bool result = false;
+
+        if (currentObject.GetComponent<EnemyController>())
+        {
+            EnemyController enemyController = currentObject.GetComponent<EnemyController>();
+
+            enemyController.enabled = false;
+            enemyController.navMeshAgent.enabled = false;
+        }
+
+        if (currentObject.GetComponent<MoveController>())
+        {
+           currentObject.GetComponent<MoveController>().enabled = false;
+        }
+
         GameObject VisualAll = currentObject.transform.Find("VisualAll").gameObject;
         animatorCurrentObject = currentObject.GetComponentInChildren<Animator>();
 
@@ -220,11 +232,31 @@ public class PlatformForBallons : MonoBehaviour
     private void OnFlyObject()
     {
         Rigidbody rigidbodyCurrentObject = currentPlayer.GetComponent<Rigidbody>();
-
         rigidbodyCurrentObject.constraints &= ~RigidbodyConstraints.FreezePositionY;
+        rigidbodyCurrentObject.useGravity = false;
+        flyBasket.isCanFly = true;
+        Debug.Log("OnFly");
+
 
     }
 
+    private void CheckCountBallons()
+    {
+        if (currentCountBallonsPlanform == maxCountBallons)
+        {
+            isAction = true;
 
+            if (typeOfPlayer == TypeOfPlayer.Player)
+            {
+                GameController.Instance.stateGame = StateGame.WinGame;
+            }
+            else if (typeOfPlayer == TypeOfPlayer.Enemy)
+            {
+                GameController.Instance.stateGame = StateGame.LoseGame;
+            }
+
+            Debug.Log(" Max count Ballons");
+        }
+    }
 
 }

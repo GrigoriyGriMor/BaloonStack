@@ -2699,7 +2699,7 @@ MonoBehaviour:
   pointStartFly: {fileID: 1987878060}
   speedPlayerPlatform: 1
   animatorDoorBasket: {fileID: 8409851606764428905}
-  timeCloseDoor: 2
+  delayCloseDoor: 1
   typeOfPlayer: 0
 --- !u!114 &3473662347459600266
 MonoBehaviour:
