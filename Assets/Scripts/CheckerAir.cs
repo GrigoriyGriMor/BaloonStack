@@ -16,17 +16,19 @@ public class CheckerAir : MonoBehaviour
 
     public int countAir;
 
-    private bool isAddAir = true;
-
     private void OnTriggerEnter(Collider other)
     {
-        if (isAddAir)
+        if (other.tag == "Air")
         {
-            if (other.tag == "Air")
+            if (countAir == maxCountAir)
+            {
+            }
+            else
             {
                 AddAir(other);
             }
         }
+        //}
     }
 
     void AddAir(Collider other)
@@ -34,10 +36,7 @@ public class CheckerAir : MonoBehaviour
         countAir += other.GetComponent<AirScript>().countAir;
         countAir = Mathf.Clamp(countAir, 0, maxCountAir);
         other.gameObject.SetActive(false);
-        if (countAir == maxCountAir)
-        {
-            isAddAir = false;
-        }
+
     }
 
     public bool DelAir(int countAirDel)
