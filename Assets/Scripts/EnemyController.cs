@@ -95,7 +95,7 @@ public class EnemyController : MonoBehaviour
     {
         SetValueBlendShapes();
 
-        if (currentTarget)
+        if (currentTarget && !checkerAir.isAddAir)
         {
             if (currentTarget.gameObject.activeInHierarchy)
             {
@@ -109,6 +109,7 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
+            checkerAir.isAddAir = false;
             UpdateTarget();
             IdleEnemy();
         }
@@ -193,7 +194,7 @@ public class EnemyController : MonoBehaviour
 
     void UpdateInflating()
     {
-      //  int baloonsInflating = 0;
+        //  int baloonsInflating = 0;
 
         if (checkerAir.countAir > 0 && !isInflating)
         {
@@ -203,7 +204,7 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-                baloonsInflating =  countBaloonsInflating;
+                baloonsInflating = countBaloonsInflating;
             }
 
             int remainderDivision = checkerAir.countAir % baloonsInflating;
