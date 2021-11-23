@@ -16,6 +16,9 @@ public class CheckerAir : MonoBehaviour
 
     public int countAir;
 
+    [HideInInspector]
+    public bool isAddAir;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Air")
@@ -33,9 +36,12 @@ public class CheckerAir : MonoBehaviour
 
     void AddAir(Collider other)
     {
-        countAir += other.GetComponent<AirScript>().countAir;
+        AirScript airScript = other.GetComponent<AirScript>();
+        countAir += airScript.countAir;
         countAir = Mathf.Clamp(countAir, 0, maxCountAir);
-        other.gameObject.SetActive(false);
+        airScript.Hide();
+        isAddAir = true;
+        //other.gameObject.SetActive(false);
 
     }
 
