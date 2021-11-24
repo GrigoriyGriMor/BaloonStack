@@ -30,28 +30,24 @@ public class AirScript : MonoBehaviour
     public void Hide()
     {
         boxCollider.enabled = false;
-        StartCoroutine(SetVisibility(Vector3.zero));
+        StartCoroutine(SetVisibility(new Vector3(0, 0, 0)));
     }
 
     private IEnumerator SetVisibility(Vector3 finish)
     {
-       
-        //var color = spriteRenderer.color;
         while (true)
         {
             transform.localScale = Vector3.Lerp(transform.localScale, finish, speed * Time.deltaTime);
 
-            if (transform.localScale == finish)
+            if (finish.magnitude <= transform.localScale.magnitude)
             {
                 gameObject.SetActive(false);
                 break;
             }
+            Debug.Log("local = " + transform.localScale.x + "   finish =" + finish.x);
 
             yield return null;
         }
-
-
-
     }
 }
 
