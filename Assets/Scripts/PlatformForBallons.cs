@@ -114,12 +114,12 @@ public class PlatformForBallons : MonoBehaviour
             if (currentPlayer.GetComponent<EnemyController>() && typeOfPlayer == TypeOfPlayer.Enemy)
             {
                 currentPlayer.GetComponent<EnemyController>().isInflating = true;
-                InvokeRepeating("InflatingBallons", 2, deltaTime);
+                InvokeRepeating("InflatingBallons", deltaTime, deltaTime);
             }
 
             if (currentPlayer.GetComponent<MoveController>() && typeOfPlayer == TypeOfPlayer.Player)
             {
-                InvokeRepeating("InflatingBallons", 2, deltaTime);
+                InvokeRepeating("InflatingBallons", deltaTime, deltaTime);
             }
             
         }
@@ -172,7 +172,7 @@ public class PlatformForBallons : MonoBehaviour
 
                 case 3:
                     animatorCurrentObject.SetBool("Run", false);    // остановился
-                    OnAnimationDoor();
+                   // OnAnimationDoor();
                     action = 4;
                     break;
 
@@ -183,6 +183,13 @@ public class PlatformForBallons : MonoBehaviour
                     break;
 
                 case 5:
+                    EndGameResult();
+                    action = 6;
+                    break;
+
+                case 6:
+
+
                     break;
             }
     }
@@ -225,7 +232,7 @@ public class PlatformForBallons : MonoBehaviour
 
     private void OnAnimationDoor()
     {
-        animatorDoorBasket.enabled = true;
+       // animatorDoorBasket.enabled = true;
        
     }
 
@@ -236,8 +243,6 @@ public class PlatformForBallons : MonoBehaviour
         rigidbodyCurrentObject.useGravity = false;
         flyBasket.isCanFly = true;
         Debug.Log("OnFly");
-
-
     }
 
     private void CheckCountBallons()
@@ -248,17 +253,23 @@ public class PlatformForBallons : MonoBehaviour
 
             GameController.Instance.refPanelResult.SetActive(false);
 
-            if (typeOfPlayer == TypeOfPlayer.Player)
-            {
-                GameController.Instance.stateGame = StateGame.WinGame;
-            }
-            else if (typeOfPlayer == TypeOfPlayer.Enemy)
-            {
-                GameController.Instance.stateGame = StateGame.LoseGame;
-            }
+            
 
             Debug.Log(" Max count Ballons");
         }
     }
+
+    private void EndGameResult()
+    {
+        if (typeOfPlayer == TypeOfPlayer.Player)
+        {
+            GameController.Instance.stateGame = StateGame.WinGame;
+        }
+        else if (typeOfPlayer == TypeOfPlayer.Enemy)
+        {
+            GameController.Instance.stateGame = StateGame.LoseGame;
+        }
+    }
+
 
 }

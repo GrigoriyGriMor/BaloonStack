@@ -180,6 +180,84 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1001 &199522707
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2942777057466187376, guid: a48106a0760258a4fa049c0715497efd, type: 3}
+      propertyPath: m_Name
+      value: Air
+      objectReference: {fileID: 0}
+    - target: {fileID: 3777236548086200248, guid: a48106a0760258a4fa049c0715497efd, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3777236548086200248, guid: a48106a0760258a4fa049c0715497efd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3777236548086200248, guid: a48106a0760258a4fa049c0715497efd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3777236548086200248, guid: a48106a0760258a4fa049c0715497efd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3777236548086200248, guid: a48106a0760258a4fa049c0715497efd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 3777236548086200248, guid: a48106a0760258a4fa049c0715497efd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3777236548086200248, guid: a48106a0760258a4fa049c0715497efd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3777236548086200248, guid: a48106a0760258a4fa049c0715497efd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.90703297
+      objectReference: {fileID: 0}
+    - target: {fileID: 3777236548086200248, guid: a48106a0760258a4fa049c0715497efd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.17562501
+      objectReference: {fileID: 0}
+    - target: {fileID: 3777236548086200248, guid: a48106a0760258a4fa049c0715497efd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.375706
+      objectReference: {fileID: 0}
+    - target: {fileID: 3777236548086200248, guid: a48106a0760258a4fa049c0715497efd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.07274638
+      objectReference: {fileID: 0}
+    - target: {fileID: 3777236548086200248, guid: a48106a0760258a4fa049c0715497efd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -15.304
+      objectReference: {fileID: 0}
+    - target: {fileID: 3777236548086200248, guid: a48106a0760258a4fa049c0715497efd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 47.147
+      objectReference: {fileID: 0}
+    - target: {fileID: 3777236548086200248, guid: a48106a0760258a4fa049c0715497efd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -15.881
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728332427717737984, guid: a48106a0760258a4fa049c0715497efd, type: 3}
+      propertyPath: countAir
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728332427717737984, guid: a48106a0760258a4fa049c0715497efd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2905783237247739969, guid: a48106a0760258a4fa049c0715497efd, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: a48106a0760258a4fa049c0715497efd, type: 3}
 --- !u!1 &395231969
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,6 +677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCountAir: 10
   countAir: 10
+  isAddAir: 0
 --- !u!114 &1219393677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2701,6 +2780,7 @@ MonoBehaviour:
   animatorDoorBasket: {fileID: 8409851606764428905}
   delayCloseDoor: 1
   typeOfPlayer: 0
+  flyBasket: {fileID: 0}
 --- !u!114 &3473662347459600266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4528,8 +4608,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93017d85717b65f47872af7da96f38d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOnFlyBasket: 0
   speedFlyBasket: 0.5
   PointFinishFlyBasket: {fileID: 1158206669}
+  isCanFly: 0
 --- !u!65 &7831733657615676024
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -39,12 +39,14 @@ public class AirScript : MonoBehaviour
         {
             transform.localScale = Vector3.Lerp(transform.localScale, finish, speed * Time.deltaTime);
 
-            if (finish.magnitude <= transform.localScale.magnitude)
+            if ((finish.magnitude + 0.1) > transform.localScale.magnitude)
             {
                 gameObject.SetActive(false);
+
                 break;
             }
-            Debug.Log("local = " + transform.localScale.x + "   finish =" + finish.x);
+
+            Debug.Log(" Disable Air ");
 
             yield return null;
         }
