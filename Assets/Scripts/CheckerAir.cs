@@ -25,6 +25,7 @@ public class CheckerAir : MonoBehaviour
         {
             if (countAir == maxCountAir)
             {
+
             }
             else
             {

@@ -31,16 +31,15 @@ public class EnemyController : MonoBehaviour
     //[SerializeField]
     private Animator animator;
 
-    [Header("Рандом кол-ва шаров для скачивания")]
-    [SerializeField]
-    private bool isRandomBallonInflating;
+    //[Header("Рандом кол-ва шаров для скачивания")]
+    //[SerializeField]
+    //private bool isRandomBallonInflating;
 
     [SerializeField]
     [Header("Кол-во шаров для скачивания")]
     private int countBaloonsInflating = 3;
 
-    public int baloonsInflating = 0;
-
+    //public int baloonsInflating = 0;
 
     [SerializeField]
     [Header("Место скачивания")]
@@ -198,18 +197,19 @@ public class EnemyController : MonoBehaviour
 
         if (checkerAir.countAir > 0 && !isInflating)
         {
-            if (isRandomBallonInflating)
-            {
-                baloonsInflating = Random.Range(1, countBaloonsInflating + 1);
-            }
-            else
-            {
-                baloonsInflating = countBaloonsInflating;
-            }
+            //if (isRandomBallonInflating)
+            //{
+            //    baloonsInflating = Random.Range(1, countBaloonsInflating + 1);
+            //}
+            //else
+            //{
+             //   baloonsInflating = countBaloonsInflating;
+            //}
 
-            int remainderDivision = checkerAir.countAir % baloonsInflating;
+            //int remainderDivision = checkerAir.countAir % baloonsInflating;
 
-            if (remainderDivision == 0)
+            if(checkerAir.countAir > countBaloonsInflating)
+            //if (remainderDivision == 0)
             {
                 currentTarget = pointInflating;
             }
