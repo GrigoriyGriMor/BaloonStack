@@ -51,6 +51,10 @@ public class PlatformForBallons : MonoBehaviour
     [SerializeField]
     private Animator animatorDoorBasket;
 
+    [SerializeField]
+    [Header(" —сыль на партикл")]
+    private ParticleSystem particleSys;
+
     [Header("ѕауза перед закр двери на платформе")]
     [SerializeField]
     private float delayCloseDoor = 1.0f;
@@ -250,6 +254,11 @@ public class PlatformForBallons : MonoBehaviour
         if (currentCountBallonsPlanform == maxCountBallons)
         {
             isAction = true;
+
+            if (particleSys)
+            {
+                particleSys.Play();
+            }
 
             GameController.Instance.refPanelResult.SetActive(false);
 

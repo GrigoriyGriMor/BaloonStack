@@ -8,11 +8,15 @@ using UnityEngine;
 /// </summary>
 public class AirScript : MonoBehaviour
 {
-    [Header("Цвет пузырька")]
-    public Color color;
+    //[Header("Цвет пузырька")]
+    //public Color color;
 
-    [Header("Id пузырька")]
-    public int id;
+    //[Header("Id пузырька")]
+    //public int id;
+
+    [SerializeField]
+    [Header(" Ссыль на партикл")]
+    private ParticleSystem particleSys;
 
     [Header("Кол - во воздуха")]
     public int countAir;
@@ -31,6 +35,11 @@ public class AirScript : MonoBehaviour
     {
         boxCollider.enabled = false;
         StartCoroutine(SetVisibility(new Vector3(0, 0, 0)));
+        if (particleSys)
+        {
+            particleSys.Play();
+        }
+
     }
 
     private IEnumerator SetVisibility(Vector3 finish)
@@ -41,7 +50,7 @@ public class AirScript : MonoBehaviour
 
             if ((finish.magnitude + 0.1) > transform.localScale.magnitude)
             {
-                gameObject.SetActive(false);
+                transform.parent.gameObject.SetActive(false);
 
                 break;
             }
