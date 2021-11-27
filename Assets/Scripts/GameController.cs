@@ -16,7 +16,7 @@ public enum StateGame
 
 public class GameController : MonoBehaviour
 {
-   
+
 
     public static GameController Instance;
 
@@ -87,7 +87,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         checkerAirPlayer = player.GetComponent<CheckerAir>();
-       // Time.timeScale = 0;
+        // Time.timeScale = 0;
         isPlayGame = false;
         stateGame = StateGame.Game;
     }
@@ -124,9 +124,15 @@ public class GameController : MonoBehaviour
     public Transform GetNewTargetRamdom(Transform positionObject)
     {
         Transform currentPosition = null;
-        if (arrayAirs.Count > 0)
+        // if (arrayAirs.Count > 0)
+        foreach (Transform currentBaloon in arrayAirs)
         {
-            currentPosition = arrayAirs[Random.Range(0, arrayAirs.Count - 1)];
+            Transform targetPosition = arrayAirs[Random.Range(0, arrayAirs.Count)];
+
+            if (targetPosition.gameObject.activeInHierarchy)
+            {
+                return targetPosition;
+            }
         }
         return currentPosition;
     }

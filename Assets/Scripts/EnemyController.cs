@@ -19,10 +19,10 @@ public class EnemyController : MonoBehaviour
     [HideInInspector]
     public NavMeshAgent navMeshAgent;
 
-    private CheckerAir checkerAir;
+    private CheckerAir checkerAir;    // кешируем CheckerAir
 
     [SerializeField]
-    private Transform currentTarget;
+    private Transform currentTarget;   // текущая цель
 
     private SkinnedMeshRenderer skinnedMeshRenderer;
 
@@ -94,16 +94,30 @@ public class EnemyController : MonoBehaviour
     {
         SetValueBlendShapes();
 
-        if (currentTarget && !checkerAir.isAddAir)
+        if (currentTarget)// && !checkerAir.isAddAir)
         {
             if (currentTarget.gameObject.activeInHierarchy)
             {
-                RunEnemy();
+                if (currentTarget.gameObject.GetComponentInChildren<AirScript>())
+                {
+                    if (currentTarget.gameObject.GetComponentInChildren<AirScript>().isActive)
+                    {
+                        RunEnemy();
+                    }
+                    else
+                    {
+                        UpdateTarget();
+                    }
+                }
+                else
+                {
+                    RunEnemy();
+                }
             }
             else
             {
                 UpdateTarget();
-                IdleEnemy();
+                //IdleEnemy();
             }
         }
         else
@@ -188,28 +202,15 @@ public class EnemyController : MonoBehaviour
     void UpdateTarget()
     {
         currentTarget = GetNewTarget(gameObject.transform);
+
     }
 
 
     void UpdateInflating()
     {
-        //  int baloonsInflating = 0;
-
         if (checkerAir.countAir > 0 && !isInflating)
         {
-            //if (isRandomBallonInflating)
-            //{
-            //    baloonsInflating = Random.Range(1, countBaloonsInflating + 1);
-            //}
-            //else
-            //{
-             //   baloonsInflating = countBaloonsInflating;
-            //}
-
-            //int remainderDivision = checkerAir.countAir % baloonsInflating;
-
-            if(checkerAir.countAir > countBaloonsInflating)
-            //if (remainderDivision == 0)
+            if (checkerAir.countAir > countBaloonsInflating || currentTarget == null)
             {
                 currentTarget = pointInflating;
             }

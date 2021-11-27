@@ -24,6 +24,9 @@ public class AirScript : MonoBehaviour
     [SerializeField] 
     private float speed = 1; // Скорость сдува
 
+    //[HideInInspector]
+    public bool isActive = true;
+
     private BoxCollider boxCollider;
 
     private void Start()
@@ -33,6 +36,7 @@ public class AirScript : MonoBehaviour
 
     public void Hide()
     {
+        isActive = false;
         boxCollider.enabled = false;
         StartCoroutine(SetVisibility(new Vector3(0, 0, 0)));
         if (particleSys)
@@ -55,7 +59,7 @@ public class AirScript : MonoBehaviour
                 break;
             }
 
-            Debug.Log(" Disable Air ");
+           // Debug.Log(" Disable Air ");
 
             yield return null;
         }

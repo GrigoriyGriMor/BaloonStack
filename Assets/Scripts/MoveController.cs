@@ -1,7 +1,4 @@
-/* =======================================MoveController===================================
- * Класс контролирует движение персонажа
- * ========================================================================================*/
-
+// движение персонажа
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,9 +9,6 @@ public class MoveController : MonoBehaviour
     [Header("Rotate")]
     [SerializeField]
     private GameObject visualPlayer;
-
-    //[SerializeField] private float rotateSpeedMultiple = 5;
-
 
     [Header("")]
     [SerializeField]
@@ -52,8 +46,6 @@ public class MoveController : MonoBehaviour
 
     private void Update()
     {
-       
-
         if (countAirPlayer >= maxRunHard)
         {
             ActiveHardRun(multiplySpeed);
@@ -62,8 +54,6 @@ public class MoveController : MonoBehaviour
         {
             ActiveEaseRun();
         }
-
-
     }
 
     void FixedUpdate()
@@ -71,20 +61,6 @@ public class MoveController : MonoBehaviour
         if (!GameController.Instance) return;
 
         Move();
-    }
-
-    private bool nextLevelAnimPlay = false;
-
-    public void NextLevelAnim()
-    {
-        nextLevelAnimPlay = true;
-    }
-
-    private IEnumerator WaitEndGameAnim()
-    {
-        yield return new WaitForSeconds(3);
-
-        //GameController.Instance.ReadyToGONextLevel();
     }
 
     private void Move()
@@ -96,28 +72,17 @@ public class MoveController : MonoBehaviour
 
         if (horizMove == 0.0f && verticalMove == 0.0f)
         {
-            //if (anim.Length != 0)
-            //{
-            //    for (int i = 0; i < anim.Length; i++)
-            //    {
             if (animator)
             {
                 animator.SetBool("Run", false);
                 animator.SetBool("RunHard", false);
-
             }
-            //        anim[i].SetBool("HardRun", false);
-            //    }
-            //}
             return;
         }
 
         float angle = Mathf.Atan2(JoystickStick.Instance.HorizontalAxis(), JoystickStick.Instance.VerticalAxis()) * Mathf.Rad2Deg;
         visualPlayer.transform.rotation = Quaternion.Euler(0, angle, 0);
 
-        //if (anim.Length != 0)
-        //{
-        //    for (int i = 0; i < anim.Length; i++)
         if (animator)
         {
             if (speed == speedBegin)
@@ -128,7 +93,6 @@ public class MoveController : MonoBehaviour
             {
                 animator.SetBool("RunHard", true);
             }
-            //            anim[i].SetBool("HardRun", true);
         }
 
         Vector3 movement = new Vector3(horizMove, 0, verticalMove) * speed;
@@ -137,49 +101,16 @@ public class MoveController : MonoBehaviour
 
     public void ActiveHardRun(float multiply)
     {
-        //for (int i = 0; i < anim.Length; i++)
-        //    anim[i].SetBool("HardRun", true);
-        // animator.SetBool("RunHard", true);
         animator.SetBool("Run", false);
         speed = speedBegin / multiply;
-        // skinnedMeshRenderer.SetBlendShapeWeight(0, 50);
         //  Debug.Log("Mode Hard");
     }
 
     public void ActiveEaseRun()
     {
-        //for (int i = 0; i < anim.Length; i++)
-        //    anim[i].SetBool("HardRun", false);
         animator.SetBool("RunHard", false);
         //  Debug.Log("Easy Hard");
         speed = speedBegin;
-    }
-
-
-    public void WinGame()
-    {
-        //if (anim.Length != 0)
-        //{
-        //    for (int i = 0; i < anim.Length; i++)
-        //    {
-        //        anim[i].SetBool("Run", false);
-        //        anim[i].SetBool("HardRun", false);
-        //        anim[i].SetBool("WinGame", true);
-        //    }
-        // }
-    }
-
-    public void LoseGame()
-    {
-        //if (anim.Length != 0)
-        //{
-        //    for (int i = 0; i < anim.Length; i++)
-        //    {
-        //        anim[i].SetBool("Run", false);
-        //        anim[i].SetBool("HardRun", false);
-        //        anim[i].SetBool("LoseGame", true);
-        //    }
-        //}
     }
 
     public void SetValueBlendShapes()

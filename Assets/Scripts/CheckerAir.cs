@@ -16,7 +16,7 @@ public class CheckerAir : MonoBehaviour
 
     public int countAir;
 
-    [HideInInspector]
+    //[HideInInspector]
     public bool isAddAir;
 
     private void OnTriggerEnter(Collider other)

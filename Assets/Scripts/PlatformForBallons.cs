@@ -119,13 +119,16 @@ public class PlatformForBallons : MonoBehaviour
             {
                 currentPlayer.GetComponent<EnemyController>().isInflating = true;
                 InvokeRepeating("InflatingBallons", deltaTime, deltaTime);
+               // Debug.Log(" This is Enemy");
             }
 
             if (currentPlayer.GetComponent<MoveController>() && typeOfPlayer == TypeOfPlayer.Player)
             {
                 InvokeRepeating("InflatingBallons", deltaTime, deltaTime);
+               // Debug.Log(" This is Player");
+
             }
-            
+
         }
     }
 
