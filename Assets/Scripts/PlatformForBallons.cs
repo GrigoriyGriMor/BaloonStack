@@ -19,7 +19,7 @@ public class PlatformForBallons : MonoBehaviour
     private bool isPlayer;
 
     //[Header("Массив шаров на платформе")]
-   // [SerializeField]
+    // [SerializeField]
     private ScriptSharik[] arrayBaloons;
 
     //[SerializeField]
@@ -77,7 +77,7 @@ public class PlatformForBallons : MonoBehaviour
     [SerializeField]
     private FlyBasket flyBasket;
 
-    
+
 
     private void Awake()
     {
@@ -119,13 +119,13 @@ public class PlatformForBallons : MonoBehaviour
             {
                 currentPlayer.GetComponent<EnemyController>().isInflating = true;
                 InvokeRepeating("InflatingBallons", deltaTime, deltaTime);
-               // Debug.Log(" This is Enemy");
+                // Debug.Log(" This is Enemy");
             }
 
             if (currentPlayer.GetComponent<MoveController>() && typeOfPlayer == TypeOfPlayer.Player)
             {
                 InvokeRepeating("InflatingBallons", deltaTime, deltaTime);
-               // Debug.Log(" This is Player");
+                // Debug.Log(" This is Player");
 
             }
 
@@ -179,14 +179,14 @@ public class PlatformForBallons : MonoBehaviour
 
                 case 3:
                     animatorCurrentObject.SetBool("Run", false);    // остановился
-                   // OnAnimationDoor();
+                                                                    // OnAnimationDoor();
                     action = 4;
                     break;
 
                 case 4:
-                    
+
                     Invoke("OnFlyObject", delayCloseDoor);       // закрыли дверь с задержкой
-                    action = 5; 
+                    action = 5;
                     break;
 
                 case 5:
@@ -215,7 +215,7 @@ public class PlatformForBallons : MonoBehaviour
 
         if (currentObject.GetComponent<MoveController>())
         {
-           currentObject.GetComponent<MoveController>().enabled = false;
+            currentObject.GetComponent<MoveController>().enabled = false;
         }
 
         GameObject VisualAll = currentObject.transform.Find("VisualAll").gameObject;
@@ -225,7 +225,7 @@ public class PlatformForBallons : MonoBehaviour
 
         VisualAll.transform.LookAt(endPosition);           // разворот
 
-       
+
         currentObject.transform.position = Vector3.Lerp(currentObject.transform.position,   // перемещаем
                              endPosition.position, speedPlayerPlatform * Time.deltaTime);   // обьект
 
@@ -239,8 +239,8 @@ public class PlatformForBallons : MonoBehaviour
 
     private void OnAnimationDoor()
     {
-       // animatorDoorBasket.enabled = true;
-       
+        // animatorDoorBasket.enabled = true;
+
     }
 
     private void OnFlyObject()
@@ -254,20 +254,22 @@ public class PlatformForBallons : MonoBehaviour
 
     private void CheckCountBallons()
     {
-        if (currentCountBallonsPlanform == maxCountBallons)
+        if (GameController.Instance.isPlayGame)
         {
-            isAction = true;
-
-            if (particleSys)
+            if (currentCountBallonsPlanform == maxCountBallons)
             {
-                particleSys.Play();
+                isAction = true;
+                GameController.Instance.isPlayGame = false;
+
+                if (particleSys)
+                {
+                    particleSys.Play();
+                }
+
+                GameController.Instance.refPanelResult.SetActive(false);
+
+                Debug.Log(" Max count Ballons");
             }
-
-            GameController.Instance.refPanelResult.SetActive(false);
-
-            
-
-            Debug.Log(" Max count Ballons");
         }
     }
 

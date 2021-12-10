@@ -58,7 +58,7 @@ public class GameController : MonoBehaviour
     //[HideInInspector]
     public bool isPlayGame;
 
-    [HideInInspector]
+   // [HideInInspector]
     public StateGame stateGame;
 
 
@@ -139,10 +139,7 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        if (isPlayGame)
-        {
             UpdateGame();
-        }
     }
 
 
@@ -163,21 +160,21 @@ public class GameController : MonoBehaviour
 
     }
 
-    /// <summary>
-    /// Проверяем количество надутых шаров на платформе
-    /// </summary>
-    /// <param name="platformForBallons"></param>
-    /// <returns></returns>
-    private bool CheckCountBallonsPlayers(PlatformForBallons platformForBallons)
-    {
-        bool result = false;
-        if (platformForBallons.currentCountBallonsPlanform == platformForBallons.maxCountBallons)
-        {
-            result = true;
-        }
+    ///// <summary>
+    ///// Проверяем количество надутых шаров на платформе
+    ///// </summary>
+    ///// <param name="platformForBallons"></param>
+    ///// <returns></returns>
+    //private bool CheckCountBallonsPlayers(PlatformForBallons platformForBallons)
+    //{
+    //    bool result = false;
+    //    if (platformForBallons.currentCountBallonsPlanform == platformForBallons.maxCountBallons)
+    //    {
+    //        result = true;
+    //    }
 
-        return result;
-    }
+    //    return result;
+    //}
 
     /// <summary>
     /// старт игры
@@ -195,7 +192,7 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("End Game");
         //Time.timeScale = 0;
-        isPlayGame = false;
+        //isPlayGame = false;
         //refPanelResult.SetActive(false);
     }
 
