@@ -117,7 +117,6 @@ public class EnemyController : MonoBehaviour
             else
             {
                 UpdateTarget();
-                //IdleEnemy();
             }
         }
         else
@@ -127,7 +126,6 @@ public class EnemyController : MonoBehaviour
             IdleEnemy();
         }
     }
-
 
     /// <summary>
     /// побежал перс 
@@ -148,7 +146,6 @@ public class EnemyController : MonoBehaviour
             }
         }
     }
-
 
     /// <summary>
     /// стоп перс
@@ -230,6 +227,7 @@ public class EnemyController : MonoBehaviour
 
     public void SetValueBlendShapes()
     {
+
         int countAirPlayer = checkerAir.countAir; // сколько у игрока воздуха
         int maxCountAirPlayer = GameController.Instance.checkerAirPlayer.maxCountAir; // сколько мах у игрока воздуха
 

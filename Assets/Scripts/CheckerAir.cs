@@ -32,7 +32,6 @@ public class CheckerAir : MonoBehaviour
                 AddAir(other);
             }
         }
-        //}
     }
 
     void AddAir(Collider other)

@@ -31,10 +31,15 @@ public class MoveController : MonoBehaviour
     private CheckerAir checkerAirPlayer;
 
     private int countAirPlayer;  // сколько у игрока воздуха
-        
+
+    private float valueBlendShape;
+
+    private float finishValueBlendShape;
+
 
     private void Awake()
     {
+
     }
 
     private void Start()
@@ -46,6 +51,9 @@ public class MoveController : MonoBehaviour
 
     private void Update()
     {
+        //countAirPlayer = checkerAirPlayer.countAir; // сколько у игрока воздуха
+        SetValueBlendShapes();
+
         if (countAirPlayer >= maxRunHard)
         {
             ActiveHardRun(multiplySpeed);
@@ -65,7 +73,7 @@ public class MoveController : MonoBehaviour
 
     private void Move()
     {
-        SetValueBlendShapes();
+        //SetValueBlendShapes();
 
         float horizMove = JoystickStick.Instance.HorizontalAxis();
         float verticalMove = JoystickStick.Instance.VerticalAxis();
@@ -115,11 +123,41 @@ public class MoveController : MonoBehaviour
 
     public void SetValueBlendShapes()
     {
-        countAirPlayer = checkerAirPlayer.countAir; // сколько у игрока воздуха
         int maxCountAirPlayer = checkerAirPlayer.maxCountAir; // сколько мах у игрока воздуха
 
-        float valueBlendShape = (float)countAirPlayer / maxCountAirPlayer * 100; // значение BlendShape в процентах
+        if (countAirPlayer > checkerAirPlayer.countAir)
+        {
+            valueBlendShape = (float)countAirPlayer / maxCountAirPlayer * 100; // значение BlendShape в процентах
+           countAirPlayer = checkerAirPlayer.countAir; // сколько у игрока воздуха
+        }
+        else if (countAirPlayer < checkerAirPlayer.countAir)
+        {
+            finishValueBlendShape = (float)countAirPlayer / maxCountAirPlayer * 100; // значение BlendShape в процентах
+            valueBlendShape = finishValueBlendShape + 20;
+            countAirPlayer = checkerAirPlayer.countAir; // сколько у игрока воздуха
+        }
 
-    skinnedMeshRenderer.SetBlendShapeWeight(0, valueBlendShape); // значение  BlendShape
+        //valueBlendShape = Mathf.Lerp(valueBlendShape, finishValueBlendShape, 1.0f);
+
+        skinnedMeshRenderer.SetBlendShapeWeight(0, valueBlendShape); // значение  BlendShape
+
+
+
+        //float valBlendShape = Mathf.Lerp();
+
+        //float _z = Mathf.Lerp(_startPos, _endPos, Time.time);
+
+
+
+        //countAirPlayer = checkerAirPlayer.countAir; // сколько у игрока воздуха
+        //int maxCountAirPlayer = checkerAirPlayer.maxCountAir; // сколько мах у игрока воздуха
+        ////float valBlendShape = Mathf.Lerp();
+
+        ////float _z = Mathf.Lerp(_startPos, _endPos, Time.time);
+        //float valueBlendShape = (float)countAirPlayer / maxCountAirPlayer * 100; // значение BlendShape в процентах
+        //skinnedMeshRenderer.SetBlendShapeWeight(0, valueBlendShape); // значение  BlendShape
+
+        countAirPlayer = checkerAirPlayer.countAir; // сколько у игрока воздуха
+
     }
 }
