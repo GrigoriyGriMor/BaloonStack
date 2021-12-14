@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.64957434, g: 0.6366881, b: 0.7333445, a: 1}
+  m_IndirectSpecularColor: {r: 0.64957476, g: 0.6366884, b: 0.7333439, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1475,10 +1475,9 @@ MonoBehaviour:
   speedBegin: 6.5
   multiplySpeed: 1.5
   maxRunHard: 4
-  timerIncrease: 0.3
-  timerDecrease: 0.3
-  maxPercentIncrease: 20
-  percentIncrease: 0
+  timerIncrease: 0.2
+  timerDecrease: 0.08
+  maxPercentIncrease: 30
 --- !u!136 &141788358
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -22033,6 +22032,9 @@ MonoBehaviour:
   speedBegin: 6.5
   multiplySpeed: 1.5
   modeBot: 1
+  timerIncrease: 0.3
+  timerDecrease: 0.3
+  maxPercentIncrease: 20
 --- !u!54 &2217596907506857148
 Rigidbody:
   m_ObjectHideFlags: 0
