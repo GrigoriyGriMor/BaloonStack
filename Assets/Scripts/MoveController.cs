@@ -22,6 +22,20 @@ public class MoveController : MonoBehaviour
     [SerializeField]
     private int maxRunHard = 2;
 
+    [SerializeField]
+    [Header("“аймер увеличени€")]
+    private float timerIncrease = 0.3f;
+
+    [SerializeField]
+    [Header("“аймер уменьшени€")]
+    private float timerDecrease = 0.3f;
+
+    [SerializeField]
+    [Header("ћах процент увеличени€")]
+    private int maxPercentIncrease = 20;
+
+    private float percentIncrease;
+
     private float speed;
 
     private Animator animator;
@@ -32,9 +46,11 @@ public class MoveController : MonoBehaviour
 
     private int countAirPlayer;  // сколько у игрока воздуха
 
-    private float valueBlendShape;
+    // private float valueBlendShape;
 
-    private float finishValueBlendShape;
+    //private float finishValueBlendShape;
+
+
 
 
     private void Awake()
@@ -123,41 +139,30 @@ public class MoveController : MonoBehaviour
 
     public void SetValueBlendShapes()
     {
+        //float valBlendShape = Mathf.Lerp();
+        //float _z = Mathf.Lerp(_startPos, _endPos, Time.time);
+
+        if (countAirPlayer < checkerAirPlayer.countAir)
+        {
+            StartCoroutine(SetPercentIncrease(timerIncrease, timerDecrease));
+        }
+
+        countAirPlayer = checkerAirPlayer.countAir; // сколько у игрока воздуха
         int maxCountAirPlayer = checkerAirPlayer.maxCountAir; // сколько мах у игрока воздуха
 
-        if (countAirPlayer > checkerAirPlayer.countAir)
-        {
-            valueBlendShape = (float)countAirPlayer / maxCountAirPlayer * 100; // значение BlendShape в процентах
-           countAirPlayer = checkerAirPlayer.countAir; // сколько у игрока воздуха
-        }
-        else if (countAirPlayer < checkerAirPlayer.countAir)
-        {
-            finishValueBlendShape = (float)countAirPlayer / maxCountAirPlayer * 100; // значение BlendShape в процентах
-            valueBlendShape = finishValueBlendShape + 20;
-            countAirPlayer = checkerAirPlayer.countAir; // сколько у игрока воздуха
-        }
-
-        //valueBlendShape = Mathf.Lerp(valueBlendShape, finishValueBlendShape, 1.0f);
-
+        float valueBlendShape = ((float)countAirPlayer / maxCountAirPlayer * 100) + percentIncrease; // значение BlendShape в процентах
         skinnedMeshRenderer.SetBlendShapeWeight(0, valueBlendShape); // значение  BlendShape
 
 
+    }
 
-        //float valBlendShape = Mathf.Lerp();
-
-        //float _z = Mathf.Lerp(_startPos, _endPos, Time.time);
-
-
-
-        //countAirPlayer = checkerAirPlayer.countAir; // сколько у игрока воздуха
-        //int maxCountAirPlayer = checkerAirPlayer.maxCountAir; // сколько мах у игрока воздуха
-        ////float valBlendShape = Mathf.Lerp();
-
-        ////float _z = Mathf.Lerp(_startPos, _endPos, Time.time);
-        //float valueBlendShape = (float)countAirPlayer / maxCountAirPlayer * 100; // значение BlendShape в процентах
-        //skinnedMeshRenderer.SetBlendShapeWeight(0, valueBlendShape); // значение  BlendShape
-
-        countAirPlayer = checkerAirPlayer.countAir; // сколько у игрока воздуха
-
+    IEnumerator SetPercentIncrease(float timerIncrease, float timerDecrease)
+    {
+        yield return new WaitForSeconds(timerIncrease);
+        percentIncrease = maxPercentIncrease;
+        yield return new WaitForSeconds(timerDecrease);
+        percentIncrease = 0;
     }
 }
+
+

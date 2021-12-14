@@ -26,6 +26,8 @@ public class EnemyController : MonoBehaviour
 
     private SkinnedMeshRenderer skinnedMeshRenderer;
 
+    private int countAirPlayer;
+
     public bool isInflating; // началась скачка воздуха
 
     //[SerializeField]
@@ -60,6 +62,20 @@ public class EnemyController : MonoBehaviour
     [Header("Режим бота нахождения цели")]
     [SerializeField]
     private ModeBot modeBot;
+
+    [SerializeField]
+    [Header("Таймер увеличения")]
+    private float timerIncrease = 0.3f;
+
+    [SerializeField]
+    [Header("Таймер уменьшения")]
+    private float timerDecrease = 0.3f;
+
+    [SerializeField]
+    [Header("Мах процент увеличения")]
+    private int maxPercentIncrease = 20;
+
+    private float percentIncrease;
 
 
     void Start()
@@ -227,13 +243,24 @@ public class EnemyController : MonoBehaviour
 
     public void SetValueBlendShapes()
     {
+        if (countAirPlayer < checkerAir.countAir)
+        {
+            StartCoroutine(SetPercentIncrease(timerIncrease, timerDecrease));
+        }
 
-        int countAirPlayer = checkerAir.countAir; // сколько у игрока воздуха
+        countAirPlayer = checkerAir.countAir; // сколько у игрока воздуха
         int maxCountAirPlayer = GameController.Instance.checkerAirPlayer.maxCountAir; // сколько мах у игрока воздуха
 
-        float valueBlendShape = (float)countAirPlayer / maxCountAirPlayer * 100; // значение BlendShape в процентах
-
+        float valueBlendShape = ((float)countAirPlayer / maxCountAirPlayer * 100) + percentIncrease; // значение BlendShape в процентах
         skinnedMeshRenderer.SetBlendShapeWeight(0, valueBlendShape); // значение  BlendShape
+    }
+
+    IEnumerator SetPercentIncrease(float timerIncrease, float timerDecrease)
+    {
+        yield return new WaitForSeconds(timerIncrease);
+        percentIncrease = maxPercentIncrease;
+        yield return new WaitForSeconds(timerDecrease);
+        percentIncrease = 0;
     }
 }
 
