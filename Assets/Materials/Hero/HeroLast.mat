@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: hero 2
+  m_Name: HeroLast
   m_Shader: {fileID: 4800000, guid: a6da473b89caeb1409bac856668af764, type: 3}
   m_ShaderKeywords: TCP2_SPEC
   m_LightmapFlags: 4
@@ -73,7 +73,7 @@ Material:
     - _Parallax: 0.02
     - _RampSmooth: 0.1
     - _RampThreshold: 0.5
-    - _Shininess: 0.1
+    - _Shininess: 0.05
     - _SmoothnessTextureChannel: 0
     - _SpecSmooth: 0.05
     - _SpecularHighlights: 1
@@ -81,9 +81,9 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.16862746, g: 0.25468403, b: 0.8, a: 1}
+    - _Color: {r: 0, g: 0.26705027, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HColor: {r: 0.6415094, g: 0.6015664, b: 0.6015664, a: 1}
+    - _HColor: {r: 0.6981132, g: 0.62830186, b: 0.62830186, a: 1}
     - _SColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SpecColor: {r: 0.18867922, g: 0.18405125, b: 0.18405125, a: 1}
+    - _SpecColor: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 1}
   m_BuildTextureStacks: []
