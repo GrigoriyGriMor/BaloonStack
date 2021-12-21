@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 
 /// <summary>
@@ -26,6 +27,9 @@ public class AirScript : MonoBehaviour
     [Header("Кол - во воздуха")]
     public int countAir;
 
+    //[SerializeField]
+    //private TMP_Text multipleTextPro;
+
     [SerializeField]
     private TextMesh multipleText;
 
@@ -37,10 +41,17 @@ public class AirScript : MonoBehaviour
 
     private BoxCollider boxCollider;
 
+    [Header("Префаб MultipleTextPro ")]
+    [SerializeField]
+    private GameObject MultipleTextPro;
+
     private void Start()
     {
+       // GameObject tempMultipleTextPro =  Instantiate(MultipleTextPro,);
+       //tempMultipleTextPro.GetComponent<MultipleTextPro>().transformObject = gameObject.transform;
+
         boxCollider = GetComponent<BoxCollider>();
-        multipleText.text = "X" + countAir.ToString();
+       // multipleText.text = "X" + countAir.ToString();
     }
 
     public void Hide()
