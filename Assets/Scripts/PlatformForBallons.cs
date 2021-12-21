@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-enum TypeOfPlayer
+public enum TypeOfPlayer
 {
     Player,
-    Enemy
+    Enemy,
+    none
 }
 
 

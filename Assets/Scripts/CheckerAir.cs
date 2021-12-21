@@ -14,10 +14,29 @@ public class CheckerAir : MonoBehaviour
     [Header("Мах кол - во воздуха")]
     public int maxCountAir = 10;
 
+   // [Header("Тип игрока для шарика")]
+   // [SerializeField]
+    private TypeOfPlayer typeOfPlayer;   //"Тип игрока для шарика"
+
     public int countAir;
 
     //[HideInInspector]
     public bool isAddAir;
+
+    private void Start()
+    {
+        if (GetComponent<MoveController>())
+        {
+            typeOfPlayer = TypeOfPlayer.Player;
+        }
+
+        if (GetComponent<EnemyController>())
+        {
+            typeOfPlayer = TypeOfPlayer.Enemy;
+        }
+    }
+
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -37,7 +56,16 @@ public class CheckerAir : MonoBehaviour
     void AddAir(Collider other)
     {
         AirScript airScript = other.GetComponent<AirScript>();
-        countAir += airScript.countAir;
+
+        if (airScript.typeOfPlayer == typeOfPlayer || typeOfPlayer == TypeOfPlayer.none)
+        {
+            countAir += airScript.countAir;
+        }
+        else 
+        {
+            countAir -= airScript.countAir;
+        }
+
         countAir = Mathf.Clamp(countAir, 0, maxCountAir);
         airScript.Hide();
         isAddAir = true;
