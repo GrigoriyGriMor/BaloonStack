@@ -14,8 +14,6 @@ public class AirScript : MonoBehaviour
     //[Header("Id пузырька")]
     //public int id;
 
-    //[Header("Множитель шарика ")]
-   // public int 
 
     [Header("Тип игрока для шарика")]
     [SerializeField]
@@ -28,7 +26,8 @@ public class AirScript : MonoBehaviour
     [Header("Кол - во воздуха")]
     public int countAir;
 
-   
+    [SerializeField]
+    private TextMesh multipleText;
 
     [SerializeField] 
     private float speed = 1; // Скорость сдува
@@ -41,6 +40,7 @@ public class AirScript : MonoBehaviour
     private void Start()
     {
         boxCollider = GetComponent<BoxCollider>();
+        multipleText.text = "X" + countAir.ToString();
     }
 
     public void Hide()
