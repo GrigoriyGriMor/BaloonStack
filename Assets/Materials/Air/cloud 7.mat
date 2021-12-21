@@ -73,14 +73,17 @@ Material:
     - _Parallax: 0.02
     - _RampSmooth: 0.1
     - _RampThreshold: 0.7
+    - _Shininess: 2
     - _SmoothnessTextureChannel: 0
+    - _SpecSmooth: 0.05
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.02264148, g: 0.635886, b: 1, a: 1}
+    - _Color: {r: 0.3978462, g: 0.5174442, b: 0.9716981, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HColor: {r: 0.6097366, g: 0.6097892, b: 0.6132076, a: 1}
     - _SColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SpecColor: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
   m_BuildTextureStacks: []
