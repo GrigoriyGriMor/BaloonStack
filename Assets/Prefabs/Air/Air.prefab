@@ -101,6 +101,7 @@ MonoBehaviour:
   multipleText: {fileID: 6959847121757725249}
   speed: 6
   isActive: 1
+  MultipleTextPro: {fileID: 3505805143563575798, guid: 51d76937c5476b24d9fcc03220a5444e, type: 3}
 --- !u!65 &8345410679038622723
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -164,7 +165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3503448473692965861
 Transform:
   m_ObjectHideFlags: 0
