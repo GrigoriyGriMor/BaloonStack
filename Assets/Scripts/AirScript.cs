@@ -14,12 +14,21 @@ public class AirScript : MonoBehaviour
     //[Header("Id пузырька")]
     //public int id;
 
+    [Header("Множитель шарика ")]
+    public int 
+
+    [Header("Тип игрока для шарика")]
+    [SerializeField]
+    public TypeOfPlayer typeOfPlayer;
+
     [SerializeField]
     [Header(" Ссыль на партикл")]
     private ParticleSystem particleSys;
 
     [Header("Кол - во воздуха")]
     public int countAir;
+
+   
 
     [SerializeField] 
     private float speed = 1; // Скорость сдува
