@@ -4592,6 +4592,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4054666952910253993, guid: a48106a0760258a4fa049c0715497efd, type: 3}
+      propertyPath: countAir
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5728332427717737984, guid: a48106a0760258a4fa049c0715497efd, type: 3}
       propertyPath: speed
       value: 4.5
@@ -4599,6 +4603,10 @@ PrefabInstance:
     - target: {fileID: 5728332427717737984, guid: a48106a0760258a4fa049c0715497efd, type: 3}
       propertyPath: countAir
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959847121757725249, guid: a48106a0760258a4fa049c0715497efd, type: 3}
+      propertyPath: m_Color.rgba
+      value: 4294901777
       objectReference: {fileID: 0}
     - target: {fileID: 7087542155384515855, guid: a48106a0760258a4fa049c0715497efd, type: 3}
       propertyPath: lengthInSec
@@ -21173,6 +21181,10 @@ PrefabInstance:
     - target: {fileID: 3777236548086200248, guid: a48106a0760258a4fa049c0715497efd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4054666952910253993, guid: a48106a0760258a4fa049c0715497efd, type: 3}
+      propertyPath: countAir
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4054666952910253993, guid: a48106a0760258a4fa049c0715497efd, type: 3}
       propertyPath: typeOfPlayer

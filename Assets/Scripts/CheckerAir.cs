@@ -59,7 +59,7 @@ public class CheckerAir : MonoBehaviour
 
         if (airScript.typeOfPlayer == typeOfPlayer || typeOfPlayer == TypeOfPlayer.none)
         {
-            countAir += airScript.countAir;
+            countAir += airScript.countAir ;
         }
         else 
         {
