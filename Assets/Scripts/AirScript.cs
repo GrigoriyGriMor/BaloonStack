@@ -14,8 +14,8 @@ public class AirScript : MonoBehaviour
     //[Header("Id пузырька")]
     //public int id;
 
-    [Header("Множитель шарика ")]
-    public int 
+    //[Header("Множитель шарика ")]
+   // public int 
 
     [Header("Тип игрока для шарика")]
     [SerializeField]
