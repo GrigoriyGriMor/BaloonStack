@@ -166,6 +166,8 @@ public class PlatformForBallons : MonoBehaviour
                 case 1:
                     if (MoveObject(currentPlayer, pointStartMove))  // подбежал к корзине
                     {
+                        if (collider != null) collider.SetActive(false);
+
                         action = 2;
                     }
                     break;
@@ -243,6 +245,7 @@ public class PlatformForBallons : MonoBehaviour
 
     }
 
+    [SerializeField] private GameObject collider;
     private void OnFlyObject()
     {
         Rigidbody rigidbodyCurrentObject = currentPlayer.GetComponent<Rigidbody>();

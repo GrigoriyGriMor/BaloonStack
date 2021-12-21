@@ -143,9 +143,7 @@ public class MoveController : MonoBehaviour
         //float _z = Mathf.Lerp(_startPos, _endPos, Time.time);
 
         if (countAirPlayer < checkerAirPlayer.countAir)
-        {
             StartCoroutine(SetPercentIncrease(timerIncrease, timerDecrease));
-        }
 
         countAirPlayer = checkerAirPlayer.countAir; // сколько у игрока воздуха
         int maxCountAirPlayer = checkerAirPlayer.maxCountAir; // сколько мах у игрока воздуха
@@ -158,10 +156,17 @@ public class MoveController : MonoBehaviour
 
     IEnumerator SetPercentIncrease(float timerIncrease, float timerDecrease)
     {
-        yield return new WaitForSeconds(timerIncrease);
-        percentIncrease = maxPercentIncrease;
-        yield return new WaitForSeconds(timerDecrease);
-        percentIncrease = 0;
+        while (percentIncrease < maxPercentIncrease)
+        {
+            percentIncrease += 1 * timerIncrease;
+            yield return new WaitForFixedUpdate();
+        }
+
+        while (percentIncrease > 0)
+        {
+            percentIncrease -= 1 * timerIncrease;
+            yield return new WaitForFixedUpdate();
+        }
     }
 }
 
