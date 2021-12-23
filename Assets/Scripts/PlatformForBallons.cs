@@ -56,9 +56,9 @@ public class PlatformForBallons : MonoBehaviour
     [Header(" Ссыль на партикл")]
     private ParticleSystem particleSys;
 
-    [Header("Пауза перед закр двери на платформе")]
-    [SerializeField]
-    private float delayCloseDoor = 1.0f;
+    //[Header("Пауза перед закр двери на платформе")]
+   //[SerializeField]
+   // private float delayCloseDoor = 1.0f;
 
     [Header("Тип игрока для платформы")]
     [SerializeField]
@@ -233,7 +233,7 @@ public class PlatformForBallons : MonoBehaviour
         currentObject.transform.position = Vector3.Lerp(currentObject.transform.position,   // перемещаем
                              endPosition.position, speedPlayerPlatform * Time.deltaTime);   // обьект
 
-        if (Vector3.Distance(currentObject.transform.position, endPosition.position) < 0.5)
+        if (Vector3.Distance(currentObject.transform.position, endPosition.position) < 0.6f)
         {
             result = true;
         }
