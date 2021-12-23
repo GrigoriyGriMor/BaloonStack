@@ -114,9 +114,13 @@ public class EnemyController : MonoBehaviour
         {
             if (currentTarget.gameObject.activeInHierarchy)
             {
-                if (currentTarget.gameObject.GetComponentInChildren<AirScript>())
+                //if  (currentTarget.gameObject.GetComponentInChildren<AirScript>())
+                //{
+                //    if (currentTarget.gameObject.GetComponentInChildren<AirScript>().isActive)
+                //    {
+                if (currentTarget.gameObject.GetComponent<AirScript>())
                 {
-                    if (currentTarget.gameObject.GetComponentInChildren<AirScript>().isActive)
+                    if (currentTarget.gameObject.GetComponent<AirScript>().isActive)
                     {
                         RunEnemy();
                     }

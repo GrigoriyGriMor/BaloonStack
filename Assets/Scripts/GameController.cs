@@ -55,10 +55,13 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private float delayOnPanelWinLose = 1.0f;
 
+    [Header("Таймер респавна шара после удаления")]
+    public float timeActived = 2.0f;
+
     //[HideInInspector]
     public bool isPlayGame;
 
-   // [HideInInspector]
+    // [HideInInspector]
     public StateGame stateGame;
 
 
@@ -105,13 +108,14 @@ public class GameController : MonoBehaviour
 
             foreach (Transform currentBaloon in arrayAirs)
             {
-                float currentDistance = Vector3.Distance(currentBaloon.position, positionObject.position);
+                Transform currentChildBaloon = currentBaloon.GetComponentInChildren<AirScript>().gameObject.transform;
+                float currentDistance = Vector3.Distance(currentChildBaloon.position, positionObject.position);
 
-                if (currentBaloon.gameObject.activeInHierarchy)
+                if (currentChildBaloon.gameObject.activeInHierarchy)
                 {
                     if (lastPosition > currentDistance)
                     {
-                        currentPosition = currentBaloon;
+                        currentPosition = currentChildBaloon;
                         lastPosition = currentDistance;
                     }
                 }
@@ -129,9 +133,14 @@ public class GameController : MonoBehaviour
         {
             Transform targetPosition = arrayAirs[Random.Range(0, arrayAirs.Count)];
 
-            if (targetPosition.gameObject.activeInHierarchy)
+            if (targetPosition.GetComponentInChildren<AirScript>())
             {
-                return targetPosition;
+                targetPosition = targetPosition.GetComponentInChildren<AirScript>().gameObject.transform;
+
+                if (targetPosition.gameObject.activeInHierarchy)
+                {
+                    return targetPosition;
+                }
             }
         }
         return currentPosition;
@@ -139,7 +148,7 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-            UpdateGame();
+        UpdateGame();
     }
 
 

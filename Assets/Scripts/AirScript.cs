@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 
 /// <summary>
@@ -15,6 +14,8 @@ public class AirScript : MonoBehaviour
     //[Header("Id пузырька")]
     //public int id;
 
+    [SerializeField]
+    private AirActived airActived;
 
     [Header("Тип игрока для шарика")]
     [SerializeField]
@@ -27,31 +28,27 @@ public class AirScript : MonoBehaviour
     [Header("Кол - во воздуха")]
     public int countAir;
 
-    //[SerializeField]
-    //private TMP_Text multipleTextPro;
 
     [SerializeField]
     private TextMesh multipleText;
 
-    [SerializeField] 
+    [SerializeField]
     private float speed = 1; // Скорость сдува
 
     //[HideInInspector]
     public bool isActive = true;
 
-    private BoxCollider boxCollider;
+    public BoxCollider boxCollider;
 
-    [Header("Префаб MultipleTextPro ")]
-    [SerializeField]
-    private GameObject MultipleTextPro;
+    private Vector3 currentScale;
+
 
     private void Start()
     {
-       // GameObject tempMultipleTextPro =  Instantiate(MultipleTextPro,);
-       //tempMultipleTextPro.GetComponent<MultipleTextPro>().transformObject = gameObject.transform;
-
+        currentScale = transform.localScale;
         boxCollider = GetComponent<BoxCollider>();
-       // multipleText.text = "X" + countAir.ToString();
+        airActived = GetComponentInParent<AirActived>();
+
     }
 
     public void Hide()
@@ -74,12 +71,18 @@ public class AirScript : MonoBehaviour
 
             if ((finish.magnitude + 0.1) > transform.localScale.magnitude)
             {
-                transform.parent.gameObject.SetActive(false);
+                //transform.parent.gameObject.SetActive(false);
+
+                airActived.AirActive(gameObject, GameController.Instance.timeActived);
+
+                transform.localScale = currentScale;
+
+                transform.gameObject.SetActive(false);
 
                 break;
             }
 
-           // Debug.Log(" Disable Air ");
+            // Debug.Log(" Disable Air ");
 
             yield return null;
         }
