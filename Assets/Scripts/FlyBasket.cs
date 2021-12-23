@@ -39,7 +39,8 @@ public class FlyBasket : MonoBehaviour
         {
             if (isCanFly)
             {
-                Invoke("OnFlyBasket", 1.0f);
+                //Invoke("OnFlyBasket", 1.0f);
+                OnFlyBasket();
                 collisionObject.transform.parent = thisTransform.transform;
                 mainCamera.transform.parent = null;
             }

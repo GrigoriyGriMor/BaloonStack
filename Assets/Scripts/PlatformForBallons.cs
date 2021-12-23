@@ -78,7 +78,7 @@ public class PlatformForBallons : MonoBehaviour
     [SerializeField]
     private FlyBasket flyBasket;
 
-
+    [SerializeField] private GameObject collider;
 
     private void Awake()
     {
@@ -188,7 +188,8 @@ public class PlatformForBallons : MonoBehaviour
 
                 case 4:
 
-                    Invoke("OnFlyObject", delayCloseDoor);       // закрыли дверь с задержкой
+                    OnFlyObject();
+                    //Invoke("OnFlyObject", delayCloseDoor);       // закрыли дверь с задержкой
                     action = 5;
                     break;
 
@@ -232,7 +233,7 @@ public class PlatformForBallons : MonoBehaviour
         currentObject.transform.position = Vector3.Lerp(currentObject.transform.position,   // перемещаем
                              endPosition.position, speedPlayerPlatform * Time.deltaTime);   // обьект
 
-        if (Vector3.Distance(currentObject.transform.position, endPosition.position) < 0.3)
+        if (Vector3.Distance(currentObject.transform.position, endPosition.position) < 0.5)
         {
             result = true;
         }
@@ -246,7 +247,7 @@ public class PlatformForBallons : MonoBehaviour
 
     }
 
-    [SerializeField] private GameObject collider;
+
     private void OnFlyObject()
     {
         Rigidbody rigidbodyCurrentObject = currentPlayer.GetComponent<Rigidbody>();
