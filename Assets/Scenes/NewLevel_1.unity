@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5983708, g: 0.8208436, b: 0.9423316, a: 1}
+  m_IndirectSpecularColor: {r: 0.5983701, g: 0.82084215, b: 0.94233054, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6068,7 +6068,6 @@ MonoBehaviour:
   speedPlayerPlatform: 2
   animatorDoorBasket: {fileID: 0}
   particleSys: {fileID: 0}
-  delayCloseDoor: 0.1
   typeOfPlayer: 1
   flyBasket: {fileID: 0}
   collider: {fileID: 0}
@@ -17864,11 +17863,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3022250734925569411, guid: 053ba58285a2f0f42863f426554c39f9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 960
+      value: 420
       objectReference: {fileID: 0}
     - target: {fileID: 3022250734925569411, guid: 053ba58285a2f0f42863f426554c39f9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1706.6667
+      value: 746.66675
       objectReference: {fileID: 0}
     - target: {fileID: 3022250734925569411, guid: 053ba58285a2f0f42863f426554c39f9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -19282,7 +19281,6 @@ MonoBehaviour:
   speedPlayerPlatform: 2
   animatorDoorBasket: {fileID: 0}
   particleSys: {fileID: 943392506}
-  delayCloseDoor: 0.1
   typeOfPlayer: 0
   flyBasket: {fileID: 0}
   collider: {fileID: 493714618}
@@ -19752,7 +19750,6 @@ MonoBehaviour:
   speedPlayerPlatform: 2
   animatorDoorBasket: {fileID: 0}
   particleSys: {fileID: 0}
-  delayCloseDoor: 0.1
   typeOfPlayer: 1
   flyBasket: {fileID: 0}
   collider: {fileID: 0}

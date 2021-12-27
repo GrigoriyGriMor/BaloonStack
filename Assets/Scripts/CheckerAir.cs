@@ -14,8 +14,6 @@ public class CheckerAir : MonoBehaviour
     [Header("Мах кол - во воздуха")]
     public int maxCountAir = 10;
 
-   // [Header("Тип игрока для шарика")]
-   // [SerializeField]
     private TypeOfPlayer typeOfPlayer;   //"Тип игрока для шарика"
 
     public int countAir;
@@ -69,7 +67,6 @@ public class CheckerAir : MonoBehaviour
         countAir = Mathf.Clamp(countAir, 0, maxCountAir);
         airScript.Hide();
         isAddAir = true;
-        //other.gameObject.SetActive(false);
 
     }
 

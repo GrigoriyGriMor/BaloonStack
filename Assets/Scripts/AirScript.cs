@@ -8,11 +8,6 @@ using UnityEngine;
 /// </summary>
 public class AirScript : MonoBehaviour
 {
-    //[Header("÷вет пузырька")]
-    //public Color color;
-
-    //[Header("Id пузырька")]
-    //public int id;
 
     [SerializeField]
     private AirActived airActived;
@@ -71,7 +66,6 @@ public class AirScript : MonoBehaviour
 
             if ((finish.magnitude + 0.1) > transform.localScale.magnitude)
             {
-                //transform.parent.gameObject.SetActive(false);
 
                 airActived.AirActive(gameObject, GameController.Instance.timeActived);
 

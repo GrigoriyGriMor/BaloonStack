@@ -46,12 +46,6 @@ public class MoveController : MonoBehaviour
 
     private int countAirPlayer;  // сколько у игрока воздуха
 
-    // private float valueBlendShape;
-
-    //private float finishValueBlendShape;
-
-
-
 
     private void Awake()
     {
@@ -67,7 +61,6 @@ public class MoveController : MonoBehaviour
 
     private void Update()
     {
-        //countAirPlayer = checkerAirPlayer.countAir; // сколько у игрока воздуха
         SetValueBlendShapes();
 
         if (countAirPlayer >= maxRunHard)
@@ -89,7 +82,6 @@ public class MoveController : MonoBehaviour
 
     private void Move()
     {
-        //SetValueBlendShapes();
 
         float horizMove = JoystickStick.Instance.HorizontalAxis();
         float verticalMove = JoystickStick.Instance.VerticalAxis();
@@ -139,8 +131,6 @@ public class MoveController : MonoBehaviour
 
     public void SetValueBlendShapes()
     {
-        //float valBlendShape = Mathf.Lerp();
-        //float _z = Mathf.Lerp(_startPos, _endPos, Time.time);
 
         if (countAirPlayer < checkerAirPlayer.countAir)
             StartCoroutine(SetPercentIncrease(timerIncrease, timerDecrease));
