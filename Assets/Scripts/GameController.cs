@@ -33,8 +33,6 @@ public class GameController : MonoBehaviour
     [Header("Массив воздуха")]
     public List<Transform> arrayAirs;
 
-    //[Header("Ссыль на панель результата")]
-    //[SerializeField]
     public GameObject refPanelResult;
 
     [Header("Ссыль на панель Победы игрока")]
@@ -48,9 +46,6 @@ public class GameController : MonoBehaviour
     [Header("Ссылка на платформу игрока")]
     public PlatformForBallons platformForBallonsPlayer;
 
-    [Header("Ссылка на платформу Бота")]
-    public PlatformForBallons platformForBallonsBot;
-
     [Header("Задержка на появление панель Win/Lose")]
     [SerializeField]
     private float delayOnPanelWinLose = 1.0f;
@@ -63,7 +58,6 @@ public class GameController : MonoBehaviour
 
     // [HideInInspector]
     public StateGame stateGame;
-
 
     public int countAirPlayer
     {
@@ -90,7 +84,6 @@ public class GameController : MonoBehaviour
     void Start()
     {
         checkerAirPlayer = player.GetComponent<CheckerAir>();
-        // Time.timeScale = 0;
         isPlayGame = false;
         stateGame = StateGame.Game;
     }
@@ -128,7 +121,6 @@ public class GameController : MonoBehaviour
     public Transform GetNewTargetRamdom(Transform positionObject)
     {
         Transform currentPosition = null;
-        // if (arrayAirs.Count > 0)
         foreach (Transform currentBaloon in arrayAirs)
         {
             Transform targetPosition = arrayAirs[Random.Range(0, arrayAirs.Count)];
@@ -169,28 +161,12 @@ public class GameController : MonoBehaviour
 
     }
 
-    ///// <summary>
-    ///// Проверяем количество надутых шаров на платформе
-    ///// </summary>
-    ///// <param name="platformForBallons"></param>
-    ///// <returns></returns>
-    //private bool CheckCountBallonsPlayers(PlatformForBallons platformForBallons)
-    //{
-    //    bool result = false;
-    //    if (platformForBallons.currentCountBallonsPlanform == platformForBallons.maxCountBallons)
-    //    {
-    //        result = true;
-    //    }
-
-    //    return result;
-    //}
 
     /// <summary>
     /// старт игры
     /// </summary>
     public void StartGame()
     {
-        //Time.timeScale = 1;
         isPlayGame = true;
     }
 
@@ -200,9 +176,6 @@ public class GameController : MonoBehaviour
     public void EndGame()
     {
         Debug.Log("End Game");
-        //Time.timeScale = 0;
-        //isPlayGame = false;
-        //refPanelResult.SetActive(false);
     }
 
     void WinGame()

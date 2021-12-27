@@ -19,11 +19,8 @@ public class PlatformForBallons : MonoBehaviour
     [SerializeField]
     private bool isPlayer;
 
-    //[Header("Массив шаров на платформе")]
-    // [SerializeField]
     private ScriptSharik[] arrayBaloons;
 
-    //[SerializeField]
     private GameObject currentPlayer;
 
     [Header("Время между надувами воздуха")]
@@ -33,7 +30,6 @@ public class PlatformForBallons : MonoBehaviour
     [Header("Мах кол-во шаров на платформе")]
     public int maxCountBallons;
 
-    //[HideInInspector]
     public int currentCountBallonsPlanform;  // текущие кол во надутых шаров
 
     [Header("Точка начала перещения")]
@@ -56,10 +52,6 @@ public class PlatformForBallons : MonoBehaviour
     [Header(" Ссыль на партикл")]
     private ParticleSystem particleSys;
 
-    //[Header("Пауза перед закр двери на платформе")]
-   //[SerializeField]
-   // private float delayCloseDoor = 1.0f;
-
     [Header("Тип игрока для платформы")]
     [SerializeField]
     private TypeOfPlayer typeOfPlayer;
@@ -70,7 +62,6 @@ public class PlatformForBallons : MonoBehaviour
 
     private bool isAction;                  // флаг действия
 
-    // [SerializeField]
     private int action = 1;                 // Номер действия
 
     private int currentIndex;               // индекс шара
@@ -189,7 +180,6 @@ public class PlatformForBallons : MonoBehaviour
                 case 4:
 
                     OnFlyObject();
-                    //Invoke("OnFlyObject", delayCloseDoor);       // закрыли дверь с задержкой
                     action = 5;
                     break;
 
@@ -240,13 +230,6 @@ public class PlatformForBallons : MonoBehaviour
 
         return result;
     }
-
-    private void OnAnimationDoor()
-    {
-        // animatorDoorBasket.enabled = true;
-
-    }
-
 
     private void OnFlyObject()
     {

@@ -30,12 +30,7 @@ public class EnemyController : MonoBehaviour
 
     public bool isInflating; // началась скачка воздуха
 
-    //[SerializeField]
     private Animator animator;
-
-    //[Header("–андом кол-ва шаров дл€ скачивани€")]
-    //[SerializeField]
-    //private bool isRandomBallonInflating;
 
     [SerializeField]
     [Header(" ол-во шаров дл€ скачивани€")]
@@ -110,14 +105,10 @@ public class EnemyController : MonoBehaviour
     {
         SetValueBlendShapes();
 
-        if (currentTarget)// && !checkerAir.isAddAir)
+        if (currentTarget)
         {
             if (currentTarget.gameObject.activeInHierarchy)
             {
-                //if  (currentTarget.gameObject.GetComponentInChildren<AirScript>())
-                //{
-                //    if (currentTarget.gameObject.GetComponentInChildren<AirScript>().isActive)
-                //    {
                 if (currentTarget.gameObject.GetComponent<AirScript>())
                 {
                     if (currentTarget.gameObject.GetComponent<AirScript>().isActive)
